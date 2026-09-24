@@ -4,14 +4,15 @@ from __future__ import annotations
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from .xmlio import first_model
+
 ROOT, BASE = "0", "1"
 MAX_NODES = 25
 MAX_ASPECT = 3.5
 
 
 def _load(path: str) -> ET.Element:
-    root = ET.parse(path).getroot()
-    return root if root.tag == "mxGraphModel" else root.find(".//mxGraphModel")
+    return first_model(path)
 
 
 def _geometry(model: ET.Element):
@@ -68,11 +69,24 @@ def lint(path: str) -> dict:
     model = _load(path)
     cells, layers, abs_rect = _geometry(model)
     layer_name = {cid: cells[cid].get("value") or "Base" for cid in layers}
-    containers = {cid for cid, c in cells.items() if "container=1" in (c.get("style") or "")}
+    compound = {cid for cid, c in cells.items() if c.get("vertex") == "1" and "childLayout=" in (c.get("style") or "")}
+
+    def owner(cid):
+        """El nodo atómico que contiene a cid (una tabla contiene sus filas y celdas)."""
+        found, p = cid, cells.get(cid, {}).get("parent") if cid in cells else None
+        while p and p in cells and p not in layers:
+            if p in compound:
+                found = p
+            p = cells[p].get("parent")
+        return found
+
+    parts = {cid for cid in cells if cells[cid].get("vertex") == "1" and owner(cid) != cid}
+    containers = {cid for cid, c in cells.items()
+                  if "container=1" in (c.get("style") or "") and cid not in compound and cid not in parts}
     decor = {cid for cid, c in cells.items()
              if cid in ("title", "legend_t") or cid.startswith(("legend_", "note")) or "text;" in (c.get("style") or "")}
     nodes = {cid for cid, c in cells.items()
-             if c.get("vertex") == "1" and cid not in containers and cid not in decor}
+             if c.get("vertex") == "1" and cid not in containers and cid not in decor and cid not in parts}
     rects = {cid: abs_rect(cid) for cid in nodes | containers}
     edges = [c for c in cells.values() if c.get("edge") == "1"]
     issues = []
@@ -88,7 +102,7 @@ def lint(path: str) -> dict:
 
     linked = set()
     for e in edges:
-        s, t = e.get("source"), e.get("target")
+        s, t = owner(e.get("source")), owner(e.get("target"))
         linked |= {s, t}
         if s not in rects or t not in rects:
             continue

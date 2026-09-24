@@ -86,3 +86,36 @@ def test_ejemplo_del_prompt_es_valido():
     agent = (Path(__file__).parents[1] / "src" / "advancedrawio" / "agent.md").read_text(encoding="utf-8")
     spec = json.loads(re.search(r"```json\n(.+?)```", agent, re.S).group(1))
     builder._validate(spec)
+
+
+def test_catalogo_cubre_todos_los_modos():
+    from advancedrawio import examples as ex
+    cat = ex.catalog()
+    assert len(cat) >= 700
+    assert {e["modo"] for e in cat} == {"spec", "mermaid", "plantilla"}
+    gcp = ex.find(tipo="cloud-gcp", limit=3)
+    assert gcp and all(e["tipo"] == "cloud-gcp" for e in gcp)
+    assert ex.find(patron="capas-interactivas")
+
+
+def test_reemplazo_conserva_formato_html():
+    from advancedrawio.examples import _rewrite_html, _visible
+    raw = '<font color="#23445D"><b>SUBJECT</b><br>DESCRIPTION&nbsp;</font>'
+    assert _visible(raw) == "SUBJECT\nDESCRIPTION"
+    out = _rewrite_html(raw, "PLATAFORMA\nIA")
+    assert out.startswith('<font color="#23445D"><b>PLATAFORMA<br>IA</b>') and "DESCRIPTION" not in out
+
+
+def test_lint_trata_tablas_como_un_nodo(tmp_path):
+    from advancedrawio.lint import lint
+    xml = """<mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/>
+    <mxCell id="t" vertex="1" parent="1" style="shape=table;container=1;childLayout=tableLayout;"><mxGeometry x="0" y="0" width="200" height="90" as="geometry"/></mxCell>
+    <mxCell id="r1" vertex="1" parent="t" style="shape=tableRow;"><mxGeometry y="30" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="r2" vertex="1" parent="t" style="shape=tableRow;"><mxGeometry y="30" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="u" vertex="1" parent="1" style="rounded=1;"><mxGeometry x="400" y="0" width="100" height="40" as="geometry"/></mxCell>
+    <mxCell id="e" edge="1" parent="1" source="r1" target="u"><mxGeometry relative="1" as="geometry"/></mxCell>
+    </root></mxGraphModel>"""
+    p = tmp_path / "t.drawio"
+    p.write_text(xml)
+    r = lint(str(p))
+    assert r["nodos"] == 2 and r["puntaje"] == 100, r
