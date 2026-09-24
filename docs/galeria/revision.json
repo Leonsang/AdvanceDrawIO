@@ -68,5 +68,457 @@
   "puntaje": 100,
   "aprobado": true,
   "problemas": []
+ },
+ "dofa-app-pagos": {
+  "archivo": "dofa-app-pagos.drawio",
+  "nodos": 21,
+  "edges": 0,
+  "puntaje": 0,
+  "aprobado": false,
+  "problemas": [
+   {
+    "tipo": "solape",
+    "nodos": [
+     "596",
+     "600"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "596",
+     "616"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "596",
+     "617"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "596",
+     "618"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "596",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "596",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "597",
+     "601"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "597",
+     "617"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "597",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "597",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "598",
+     "602"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "598",
+     "618"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "598",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "598",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "599",
+     "603"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "599",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "599",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "600",
+     "608"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "600",
+     "616"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "600",
+     "617"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "600",
+     "618"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "600",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "600",
+     "622"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "600",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "601",
+     "610"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "601",
+     "617"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "601",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "601",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "602",
+     "612"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "602",
+     "618"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "602",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "602",
+     "623"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "602",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "603",
+     "614"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "603",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "603",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "608",
+     "616"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "610",
+     "617"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "612",
+     "618"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "614",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "616",
+     "617"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "616",
+     "618"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "616",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "616",
+     "622"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "616",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "617",
+     "618"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "617",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "617",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "618",
+     "619"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "618",
+     "623"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "618",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "solape",
+    "nodos": [
+     "619",
+     "624"
+    ],
+    "arreglo": "Reporta el bug o separa los nodos en zonas distintas."
+   },
+   {
+    "tipo": "nodo_aislado",
+    "nodos": [
+     "596",
+     "597",
+     "598",
+     "599",
+     "600",
+     "601",
+     "602",
+     "603",
+     "608",
+     "610",
+     "612",
+     "614",
+     "616",
+     "617",
+     "618",
+     "619",
+     "620",
+     "621",
+     "622",
+     "623",
+     "624"
+    ],
+    "arreglo": "Conéctalo con un edge o elimínalo; los nodos sueltos confunden."
+   }
+  ]
  }
 }
