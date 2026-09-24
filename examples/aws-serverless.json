@@ -186,18 +186,6 @@
       "to": "cw",
       "dashed": true,
       "layer": "obs"
-    },
-    {
-      "from": "facturar",
-      "to": "cw",
-      "dashed": true,
-      "layer": "obs"
-    },
-    {
-      "from": "notificar",
-      "to": "cw",
-      "dashed": true,
-      "layer": "obs"
     }
   ],
   "notes": [
