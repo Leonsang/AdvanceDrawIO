@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: draw.io dibuja algo mal (fuera del layout de AdvanceDrawIO)
+    url: https://github.com/jgraph/drawio-desktop/issues
+    about: El render, el export y el motor ELK son de draw.io Desktop.
+  - name: Reportar una vulnerabilidad
+    url: https://github.com/Leonsang/AdvanceDrawIO/security/advisories/new
+    about: Repórtala en privado, no en un issue público.

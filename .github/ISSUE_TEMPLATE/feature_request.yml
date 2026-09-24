@@ -1,0 +1,15 @@
+name: Idea
+description: Algo que AdvanceDrawIO debería hacer distinto o además.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué intentas diagramar
+      description: La situación, antes de la solución.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Qué ayudaría

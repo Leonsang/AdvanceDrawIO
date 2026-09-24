@@ -1,0 +1,38 @@
+name: Bug
+description: El diagrama sale mal, una tool falla o el servidor no arranca.
+labels: [bug]
+body:
+  - type: textarea
+    id: spec
+    attributes:
+      label: Spec, Mermaid o llamada
+      description: El JSON del spec (o el código Mermaid, o la tool y sus argumentos). Es lo más útil del reporte.
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Qué esperabas y qué pasó
+      description: Si puedes, adjunta el PNG generado.
+    validations:
+      required: true
+  - type: textarea
+    id: revision
+    attributes:
+      label: Salida de la revisión (`revision` o `lint_diagram`)
+      render: json
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Salida de la tool `doctor`
+      render: json
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Sistema operativo
+      options: [Windows, macOS, Linux, WSL]
+    validations:
+      required: true
