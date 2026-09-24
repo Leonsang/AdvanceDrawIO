@@ -48,8 +48,11 @@ Así se corrigieron los ejemplos de la [galería](galeria/README.md), siguiendo 
 | Plataforma de datos de recaudo | 92 · proporción 4,2 | `direction: DOWN` | 100 |
 | Plataforma IA GCP | 80 · proporción 7,3 | `direction: DOWN` | 100 |
 | Multiagente GCP | 80 · proporción 5,7 | `direction: DOWN` | 100 |
-| Cómo funciona | 92 · proporción 4,7 | `DOWN` y la revisión como paso del pipeline | ver galería |
-| AWS serverless | 75 · zona casi vacía, proporción 5,6 | fusionar `AWS Cloud` con la región y hacer visibles las capas secundarias | ver galería |
+| Cómo funciona | 92 · proporción 4,7 | `DOWN` y la revisión como paso del pipeline | 100 |
+| AWS serverless | 75 · zona casi vacía, proporción 5,6 | fusionar `AWS Cloud` con la región, capas secundarias visibles, fan-out en EventBridge y una columna menos | 92 · proporción 4,8 |
 
 En AWS, `DOWN` empeoró la proporción (9,6) porque la cadena es larga y lineal, así que se volvió a
-`RIGHT`: el playbook dice volver a la mejor versión cuando una iteración empeora.
+`RIGHT`, como dice el playbook cuando una iteración empeora. Lo que sí funcionó fue cambiar la forma
+del flujo en vez de la dirección: una segunda rama en paralelo (EventBridge → facturación y
+notificación) agrega alto sin agregar largo, y quitar un salto innecesario (la cola entre EventBridge
+y la Lambda) y un edge de observabilidad que abría una columna extra acortó el ancho.
