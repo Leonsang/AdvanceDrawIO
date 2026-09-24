@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from . import icons
 
+BASE_EDGE = "#5F6368"
 LAYER_COLORS = ["#4284F3", "#EA4335", "#34A853", "#F9AB00", "#A142F4", "#12B5CB"]
 EXTERNAL_FILLS = ["#EFEBE9", "#E6F4EA", "#F3E8FD", "#E8F0FE", "#FEF7E0"]
 
@@ -34,7 +35,7 @@ def node_label(kind: str, label: str, product: str | None) -> str:
 
 
 def zone_style(kind: str, index: int = 0) -> str:
-    common = ("container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;"
+    common = (f"akind={kind};container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;"
               "align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;")
     if kind == "cloud":
         return common + "fillColor=#F1F3F4;strokeColor=none;fontStyle=1;fontColor=#5F6368;fontSize=14;"

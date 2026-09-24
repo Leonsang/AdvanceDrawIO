@@ -91,7 +91,7 @@ def _draft(spec: dict) -> tuple[ET.Element, dict]:
         sizes[n["id"]] = (w, h)
         _cell(root, id=n["id"], parent=p, vertex=1, value=C.node_label(kind, n.get("label", n["id"]), n.get("product")),
               style=C.node_style(kind, n.get("product")), geom={"width": w, "height": h})
-    colors = {l["id"]: l.get("color") or C.LAYER_COLORS[(i + 1) % len(C.LAYER_COLORS)]
+    colors = {l["id"]: l.get("color") or C.LAYER_COLORS[i % len(C.LAYER_COLORS)]
               for i, l in enumerate(spec.get("layers", []))}
     edge_layer = {}
     for i, e in enumerate(spec.get("edges", [])):
@@ -104,7 +104,7 @@ def _draft(spec: dict) -> tuple[ET.Element, dict]:
         label = str(e.get("label", ""))
         if e.get("step") is not None:
             label = f"&nbsp;{e['step']}&nbsp;" + (f"· {label}&nbsp;" if label else "")
-        color = colors.get(e.get("layer"), C.LAYER_COLORS[0])
+        color = colors.get(e.get("layer"), C.BASE_EDGE)
         _cell(root, id=eid, parent=common, edge=1, source=e["from"], target=e["to"], value=label,
               style=C.edge_style(color, e.get("dashed", False), e.get("bidirectional", False), e.get("step") is not None),
               geom={"relative": 1})

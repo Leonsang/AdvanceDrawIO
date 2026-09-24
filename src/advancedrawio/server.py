@@ -9,6 +9,7 @@ from mcp.server.mcpserver import Image, MCPServer
 from mcp.server.mcpserver.exceptions import ToolError
 
 from . import builder, drawio_cli, icons
+from .lint import lint
 
 SPEC_DOC = """Spec JSON (tú defines estructura; el layout, estilos e iconos los pone el servidor):
 {
@@ -30,6 +31,15 @@ mcp = MCPServer(
                   "producto, 2) build_diagram con el spec, 3) mira el PNG devuelto y corrige el spec si hay "
                   "cruces o nodos mal agrupados. Nunca escribas XML ni coordenadas.\n\n" + SPEC_DOC),
 )
+
+AGENT = (Path(__file__).parent / "agent.md").read_text(encoding="utf-8")
+
+
+@mcp.prompt(name="arquitecto_drawio", title="Arquitecto de diagramas draw.io",
+            description="Agente que diseña, construye y corrige el diagrama hasta que pase la revisión.")
+def arquitecto_drawio(sistema: str) -> str:
+    return f"{AGENT}\n\n## Sistema a diagramar\n\n{sistema}"
+
 
 OUT = os.environ.get("ADVANCEDRAWIO_OUT", str(Path.cwd() / "diagramas"))
 
@@ -57,7 +67,17 @@ def build_diagram(spec: dict, name: str = "diagrama", out_dir: str | None = None
         res = builder.build(spec, out_dir or OUT, name, fmts)
     except (ValueError, RuntimeError) as e:
         raise ToolError(str(e)) from e
-    return [json.dumps(res, ensure_ascii=False), Image(path=res["png"])]
+    res["revision"] = lint(res["drawio"])
+    return [json.dumps(res, ensure_ascii=False, indent=1), Image(path=res["png"])]
+
+
+@mcp.tool()
+def lint_diagram(path: str) -> dict:
+    """Revisión objetiva de un .drawio: solapes, edges que cruzan nodos, nodos aislados, proporción."""
+    try:
+        return lint(path)
+    except (OSError, ValueError) as e:
+        raise ToolError(f"No pude leer {path}: {e}") from e
 
 
 @mcp.tool()

@@ -55,3 +55,34 @@ def test_build_completo(tmp_path):
     root = ET.parse(res["drawio"]).getroot()
     layers = [c.get("value") for c in root.iter("mxCell") if c.get("parent") == "0"]
     assert layers == ["Base", "Flujo conversacional", "Datos y analítica", "Seguridad", "Anotaciones"]
+
+
+def test_lint_detecta_edge_que_cruza_nodo(tmp_path):
+    from advancedrawio.lint import lint
+    xml = """<mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/>
+    <mxCell id="a" vertex="1" parent="1" style="rounded=1;"><mxGeometry x="0" y="0" width="100" height="40" as="geometry"/></mxCell>
+    <mxCell id="b" vertex="1" parent="1" style="rounded=1;"><mxGeometry x="400" y="0" width="100" height="40" as="geometry"/></mxCell>
+    <mxCell id="c" vertex="1" parent="1" style="rounded=1;"><mxGeometry x="200" y="0" width="100" height="40" as="geometry"/></mxCell>
+    <mxCell id="e1" edge="1" parent="1" source="a" target="b"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2" edge="1" parent="1" source="a" target="c"><mxGeometry relative="1" as="geometry"/></mxCell>
+    </root></mxGraphModel>"""
+    p = tmp_path / "x.drawio"
+    p.write_text(xml)
+    r = lint(str(p))
+    cruces = [i for i in r["problemas"] if i["tipo"] == "edge_cruza_nodo"]
+    assert cruces and cruces[0]["edge"] == "a->b" and cruces[0]["cruza"] == ["c"]
+    assert not r["aprobado"] or r["puntaje"] < 100
+
+
+def test_subagente_sincronizado_con_prompt():
+    root = Path(__file__).parents[1]
+    agent = (root / "src" / "advancedrawio" / "agent.md").read_text(encoding="utf-8")
+    sub = (root / ".claude" / "agents" / "drawio-architect.md").read_text(encoding="utf-8")
+    assert sub.split("---", 2)[2].strip() == agent.strip(), "regenera .claude/agents/drawio-architect.md"
+
+
+def test_ejemplo_del_prompt_es_valido():
+    import re
+    agent = (Path(__file__).parents[1] / "src" / "advancedrawio" / "agent.md").read_text(encoding="utf-8")
+    spec = json.loads(re.search(r"```json\n(.+?)```", agent, re.S).group(1))
+    builder._validate(spec)

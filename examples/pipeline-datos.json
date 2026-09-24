@@ -1,0 +1,68 @@
+{
+  "title": "Ingesta de pagos",
+  "direction": "RIGHT",
+  "layers": [
+    {
+      "id": "obs",
+      "name": "Observabilidad",
+      "visible": false
+    }
+  ],
+  "zones": [
+    {
+      "id": "gcp",
+      "label": "Google Cloud",
+      "kind": "cloud"
+    },
+    {
+      "id": "erp",
+      "label": "ERP",
+      "kind": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "sap",
+      "label": "SAP FI-CA",
+      "kind": "database",
+      "zone": "erp"
+    },
+    {
+      "id": "ps",
+      "label": "Ingesta",
+      "product": "Pub Sub",
+      "zone": "gcp"
+    },
+    {
+      "id": "bq",
+      "label": "Warehouse",
+      "product": "BigQuery",
+      "zone": "gcp"
+    },
+    {
+      "id": "mon",
+      "label": "Alertas",
+      "product": "Cloud Monitoring",
+      "zone": "gcp"
+    }
+  ],
+  "edges": [
+    {
+      "from": "sap",
+      "to": "ps",
+      "step": 1,
+      "label": "CDC"
+    },
+    {
+      "from": "ps",
+      "to": "bq",
+      "step": 2
+    },
+    {
+      "from": "bq",
+      "to": "mon",
+      "layer": "obs",
+      "dashed": true
+    }
+  ]
+}
