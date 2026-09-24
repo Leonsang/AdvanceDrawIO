@@ -83,14 +83,6 @@
       "zone": "async"
     },
     {
-      "id": "cola",
-      "label": "Cola facturación",
-      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;",
-      "w": 56,
-      "h": 56,
-      "zone": "async"
-    },
-    {
       "id": "facturar",
       "label": "Facturar",
       "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;",
@@ -160,11 +152,6 @@
     },
     {
       "from": "bus",
-      "to": "cola",
-      "layer": "pedido"
-    },
-    {
-      "from": "cola",
       "to": "facturar",
       "step": 5,
       "layer": "pedido"
@@ -215,8 +202,8 @@
   ],
   "notes": [
     {
-      "text": "Reintentos y DLQ en la cola",
-      "near": "cola"
+      "text": "Reintentos y DLQ en la invocación",
+      "near": "facturar"
     }
   ]
 }
