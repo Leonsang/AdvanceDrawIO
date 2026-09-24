@@ -4,11 +4,26 @@ build-backend = "hatchling.build"
 
 [project]
 name = "advancedrawio"
-version = "0.1.0"
+version = "0.2.0"
 description = "MCP server para diagramas draw.io avanzados: layout ELK, zonas anidadas, iconos oficiales y capas interactivas"
 readme = "README.md"
 requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Erick Sang" }]
+keywords = ["mcp", "drawio", "diagrams", "architecture", "elk", "llm"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Graphics :: Editors :: Vector-Based",
+  "Topic :: Software Development :: Documentation",
+]
 dependencies = ["mcp>=2.0"]
+
+[project.urls]
+Homepage = "https://github.com/Leonsang/AdvanceDrawIO"
+Documentation = "https://github.com/Leonsang/AdvanceDrawIO/tree/main/docs"
+Issues = "https://github.com/Leonsang/AdvanceDrawIO/issues"
 
 [project.optional-dependencies]
 dev = ["pytest", "ruff"]

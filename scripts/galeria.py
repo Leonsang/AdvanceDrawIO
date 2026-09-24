@@ -72,8 +72,9 @@ def main() -> int:
     for r in rows:
         rev = r["revision"]
         problems = ", ".join(sorted({i["tipo"] for i in rev["problemas"]})) or "sin problemas"
+        score = "no aplica (diseño del ejemplo)" if r["modo"] == "plantilla" else f"{rev['puntaje']} · {problems}"
         lines.append(f"| [{r['titulo']}](../../examples/{r['fuente']}) | {r['modo']} | {rev['nodos']} | "
-                     f"{rev['puntaje']} · {problems} | [draw.io](https://app.diagrams.net/#U{RAW}/{r['nombre']}.drawio) |")
+                     f"{score} | [draw.io](https://app.diagrams.net/#U{RAW}/{r['nombre']}.drawio) |")
     lines.append("")
     for r in rows:
         lines += [f"## {r['titulo']}", "", f"![{r['nombre']}]({r['nombre']}.png)", ""]

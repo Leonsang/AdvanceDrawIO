@@ -1,6 +1,6 @@
 {
   "title": "API de pedidos serverless (AWS)",
-  "direction": "DOWN",
+  "direction": "RIGHT",
   "layers": [
     {
       "id": "pedido",

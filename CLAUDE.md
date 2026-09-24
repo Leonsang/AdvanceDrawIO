@@ -8,8 +8,9 @@ Dueño: Erick Sang. Preferencia: soluciones mínimas, sin sobreingeniería.
 
 ```bash
 bash scripts/setup-cloud.sh && source .venv/bin/activate  # draw.io + xvfb + paquete en .venv (VM cloud)
-pytest -q                                        # 10 tests; uno usa draw.io real
-advancedrawio-build examples/plataforma-ia-gcp.json -o diagramas
+ruff check src tests scripts && pytest -q       # los tests con draw.io real se saltan si no está
+advancedrawio-build examples/plataforma-ia-gcp.json -o diagramas   # también .mmd y .plantilla.json
+python scripts/galeria.py                        # todos los ejemplos -> docs/galeria (PNG, .drawio, puntajes)
 advancedrawio-build --search "bigquery"          # nombres exactos de iconos
 python -c "from advancedrawio.lint import lint; print(lint('diagramas/X.drawio'))"
 ```
@@ -52,24 +53,29 @@ python -c "from advancedrawio.lint import lint; print(lint('diagramas/X.drawio')
 
 ## Estado y siguiente paso
 
-Validando el agente con `examples/plataforma-recaudo.json`, siguiendo `agent.md` al pie de la letra:
-- Iteración 1: puntaje 92. La zona Control flotaba y la primera capa salía roja (bug de colores, ya corregido).
-- Iteración 2: Orquestación visible. Puntaje 92 con un único problema: `proporcion_extrema` 4.2.
-- **Pendiente, iteración 3**: alternar `direction` a DOWN. Si empeora, volver a la 2 y probar a agrupar
-  etapas en zonas. Registrar el resultado aquí.
+Validación del agente con los ejemplos (resultados en `docs/galeria/revision.json`, que regenera el CI):
+- `plataforma-recaudo`: iteración 1 → 92 (zona Control flotaba, bug de colores corregido); iteración 2 → 92
+  (`proporcion_extrema` 4.2); **iteración 3, `direction: DOWN` → 100**.
+- `DOWN` también dejó en 100 a `plataforma-ia-gcp` (antes 80, proporción 7.3), `multiagente-gcp` y
+  `como-funciona`. En `aws-serverless` empeoró (9.6): la cadena es larga y lineal, se queda en `RIGHT`.
+- El modo plantilla tenía un bug (reemplazaba "S" dentro de textos ya reemplazados). Corregido, con test.
 
-Hecho: catálogo de 770 ejemplos + tools find_examples, get_example, search_shapes, build_from_mermaid y
-build_from_example. Probado por MCP: ER con Mermaid (100), DOFA con plantilla y AWS con stencils (100).
+Pendientes:
+1. Revisión de notas: detectar cuando una nota pisa el borde de una zona (pasa en plataforma-ia-gcp con DOWN).
+2. Detectar huecos grandes (plataforma-ia-gcp con DOWN deja mucho aire entre Canales y Google Cloud).
+3. Validar el modo plantilla con más tipos (planos, wireframes, eléctricos).
+4. Iconos de Vertex AI y Gemini: los aporta Erick en `icons/` (no están en el índice de draw.io).
 
-Pendientes después:
-1. Validar el modo plantilla con más tipos (planos, wireframes, eléctricos): puede haber textos repartidos
-   en varias celdas que el reemplazo por celda no cubra.
-2. Revisión de notas: detectar cuando una nota pisa el borde de una zona (pasa en plataforma-ia-gcp con DOWN).
-3. Iconos de Vertex AI y Gemini: los aporta Erick en `icons/` (no están en el índice de draw.io).
+## Reglas del repo
+
+- El repo es **público**: los ejemplos, imágenes y docs no llevan nombres de clientes, empresas,
+  proyectos ni datos internos. Usa escenarios genéricos.
+- `docs/galeria/` la genera el workflow `galería` en cada push que toca `examples/` o el código. No
+  se edita a mano; haz `git pull` antes de seguir trabajando para traer su commit.
 
 ## Sesiones cloud
 
 - El paquete se instala en `.venv` (el pip del sistema choca con PyJWT de Debian).
 - Si la red del entorno no permite las descargas de releases de github.com, draw.io no se instala:
-  el setup avisa y sigue, y el test con draw.io real se salta. Para el pipeline completo (layout ELK,
-  PNG), habilitar ese acceso en la configuración de red del entorno.
+  el setup avisa y sigue, y el test con draw.io real se salta. Para ver el resultado igual, haz push:
+  el CI construye la galería con draw.io real y la commitea (ver docs/cloud.md).

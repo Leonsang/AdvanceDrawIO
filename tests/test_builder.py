@@ -119,3 +119,19 @@ def test_lint_trata_tablas_como_un_nodo(tmp_path):
     p.write_text(xml)
     r = lint(str(p))
     assert r["nodos"] == 2 and r["puntaje"] == 100, r
+
+
+def test_plantilla_no_reemplaza_sobre_texto_ya_reemplazado(tmp_path, monkeypatch):
+    from advancedrawio import examples as ex
+    src = tmp_path / "swot.drawio"
+    src.write_text("""<mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/>
+    <mxCell id="t" vertex="1" parent="1" value="SUBJECT DESCRIPTION&lt;br&gt;SWOT ANALYSIS" style="text;html=1;"><mxGeometry as="geometry"/></mxCell>
+    <mxCell id="s" vertex="1" parent="1" value="S" style="text;"><mxGeometry as="geometry"/></mxCell>
+    <mxCell id="i" vertex="1" parent="1" value="INTERNAL" style="text;"><mxGeometry as="geometry"/></mxCell>
+    <mxCell id="n" vertex="1" parent="1" value="Plan S de pagos" style="text;"><mxGeometry as="geometry"/></mxCell>
+    </root></mxGraphModel>""", encoding="utf-8")
+    monkeypatch.setattr(ex, "download", lambda eid: src)
+    out = ex.from_template("x", {"SUBJECT DESCRIPTION\nSWOT ANALYSIS": "APP DE PAGOS\nANÁLISIS DOFA", "S": "F",
+                                 "INTERNAL": "INTERNO"}, tmp_path / "o.drawio")
+    vals = {c.get("id"): ex._visible(c.get("value")) for c in ET.parse(out).getroot().iter("mxCell") if c.get("value")}
+    assert vals == {"t": "APP DE PAGOS\nANÁLISIS DOFA", "s": "F", "i": "INTERNO", "n": "Plan F de pagos"}

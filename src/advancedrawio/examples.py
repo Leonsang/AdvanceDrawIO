@@ -150,16 +150,19 @@ def from_template(eid: str, replacements: dict[str, str], out: Path) -> Path:
             if not raw:
                 continue
             seen = _visible(raw)
-            new_raw = raw
-            for old, new in wanted.items():
-                if seen == old:  # la celda entera es ese texto: se reescribe (conserva html=1)
-                    new_raw = _rewrite_html(raw, new) if "<" in raw else new
-                elif old in seen and old in raw:  # fragmento literal dentro de un texto mayor
-                    new_raw = new_raw.replace(old, new)
-                else:
-                    continue
-                missing.discard(old)
-            el.set(attr, new_raw)
+            if seen in wanted:  # la celda entera es ese texto: se reescribe (conserva html=1) y no se toca más
+                el.set(attr, _rewrite_html(raw, wanted[seen]) if "<" in raw else wanted[seen])
+                missing.discard(seen)
+                continue
+            # fragmentos literales dentro de un texto mayor: palabras completas, en una sola pasada sobre
+            # el original, para no reemplazar dentro de lo ya reemplazado ("S" dentro de "PAGOS")
+            frags = sorted((o for o in wanted if o in seen and o in raw), key=len, reverse=True)
+            if frags:
+                pattern = re.compile(r"(?<!\w)(" + "|".join(map(re.escape, frags)) + r")(?!\w)")
+                found = pattern.findall(raw)
+                if found:
+                    el.set(attr, pattern.sub(lambda m: wanted[m.group(1)], raw))
+                    missing.difference_update(found)
     if missing:
         raise ValueError(f"Textos no encontrados en la plantilla: {sorted(missing)}. "
                          "Usa get_example y copia los textos exactos de 'textos'.")

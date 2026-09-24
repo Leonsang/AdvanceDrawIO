@@ -148,8 +148,15 @@
     },
     {
       "from": "capas",
-      "to": "drawio",
+      "to": "lint",
       "step": 5,
+      "layer": "flujo"
+    },
+    {
+      "from": "lint",
+      "to": "drawio",
+      "step": 6,
+      "label": "entrega",
       "layer": "flujo"
     },
     {
@@ -158,16 +165,9 @@
       "layer": "flujo"
     },
     {
-      "from": "drawio",
-      "to": "lint",
-      "label": "puntaje",
-      "layer": "loop"
-    },
-    {
       "from": "lint",
       "to": "llm",
-      "step": 6,
-      "label": "corrige el spec",
+      "label": "puntaje + PNG: corrige el spec",
       "layer": "loop",
       "dashed": true
     }
