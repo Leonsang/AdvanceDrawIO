@@ -8,7 +8,7 @@ Dueño: Erick Sang. Preferencia: soluciones mínimas, sin sobreingeniería.
 
 ```bash
 bash scripts/setup-cloud.sh && source .venv/bin/activate  # draw.io + xvfb + paquete en .venv (VM cloud)
-pytest -q                                        # 7 tests; uno usa draw.io real
+pytest -q                                        # 10 tests; uno usa draw.io real
 advancedrawio-build examples/plataforma-ia-gcp.json -o diagramas
 advancedrawio-build --search "bigquery"          # nombres exactos de iconos
 python -c "from advancedrawio.lint import lint; print(lint('diagramas/X.drawio'))"
