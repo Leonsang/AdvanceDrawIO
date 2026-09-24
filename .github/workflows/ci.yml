@@ -34,7 +34,7 @@ jobs:
           python-version: ${{ matrix.python }}
           cache: pip
       # El índice de iconos (~5 MB) se descarga una vez y se reutiliza entre jobs.
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: ~/.cache/advancedrawio
           key: icon-index-v1
@@ -50,7 +50,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: ~/.cache/advancedrawio
           key: icon-index-v1
