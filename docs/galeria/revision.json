@@ -1,14 +1,14 @@
 {
  "aws-serverless": {
   "archivo": "aws-serverless.drawio",
-  "nodos": 10,
-  "edges": 10,
+  "nodos": 12,
+  "edges": 13,
   "puntaje": 80,
   "aprobado": false,
   "problemas": [
    {
     "tipo": "proporcion_extrema",
-    "ratio": 6.5,
+    "ratio": 5.6,
     "arreglo": "Cambia 'direction' (RIGHT<->DOWN) o agrupa etapas en zonas para que el diagrama sea más compacto."
    }
   ]

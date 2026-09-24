@@ -5,7 +5,7 @@ el workflow **galería** la regenera.
 
 | Ejemplo | Modo | Nodos | Revisión | Abrir |
 |---|---|---|---|---|
-| [API de pedidos serverless (AWS)](../../examples/aws-serverless.json) | spec | 10 | 80 · proporcion_extrema | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/aws-serverless.drawio) |
+| [API de pedidos serverless (AWS)](../../examples/aws-serverless.json) | spec | 12 | 80 · proporcion_extrema | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/aws-serverless.drawio) |
 | [Cómo funciona AdvanceDrawIO](../../examples/como-funciona.json) | spec | 10 | 100 · sin problemas | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/como-funciona.drawio) |
 | [Contexto del sistema de recaudo (C4 nivel 1)](../../examples/contexto-c4.json) | spec | 6 | 100 · sin problemas | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/contexto-c4.drawio) |
 | [Asistente multiagente de atención](../../examples/multiagente-gcp.json) | spec | 10 | 100 · sin problemas | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/multiagente-gcp.drawio) |
