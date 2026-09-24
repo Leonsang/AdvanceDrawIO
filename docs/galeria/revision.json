@@ -3,17 +3,12 @@
   "archivo": "aws-serverless.drawio",
   "nodos": 10,
   "edges": 10,
-  "puntaje": 75,
+  "puntaje": 80,
   "aprobado": false,
   "problemas": [
    {
-    "tipo": "zona_casi_vacia",
-    "zona": "aws",
-    "arreglo": "Fusiona la zona con su vecina o quítala; una zona con 1 elemento es ruido."
-   },
-   {
     "tipo": "proporcion_extrema",
-    "ratio": 5.6,
+    "ratio": 9.6,
     "arreglo": "Cambia 'direction' (RIGHT<->DOWN) o agrupa etapas en zonas para que el diagrama sea más compacto."
    }
   ]
@@ -22,15 +17,9 @@
   "archivo": "como-funciona.drawio",
   "nodos": 10,
   "edges": 10,
-  "puntaje": 92,
+  "puntaje": 100,
   "aprobado": true,
-  "problemas": [
-   {
-    "tipo": "proporcion_extrema",
-    "ratio": 4.7,
-    "arreglo": "Cambia 'direction' (RIGHT<->DOWN) o agrupa etapas en zonas para que el diagrama sea más compacto."
-   }
-  ]
+  "problemas": []
  },
  "contexto-c4": {
   "archivo": "contexto-c4.drawio",
@@ -44,15 +33,9 @@
   "archivo": "multiagente-gcp.drawio",
   "nodos": 10,
   "edges": 10,
-  "puntaje": 80,
-  "aprobado": false,
-  "problemas": [
-   {
-    "tipo": "proporcion_extrema",
-    "ratio": 5.7,
-    "arreglo": "Cambia 'direction' (RIGHT<->DOWN) o agrupa etapas en zonas para que el diagrama sea más compacto."
-   }
-  ]
+  "puntaje": 100,
+  "aprobado": true,
+  "problemas": []
  },
  "pipeline-datos": {
   "archivo": "pipeline-datos.drawio",
@@ -66,29 +49,17 @@
   "archivo": "plataforma-ia-gcp.drawio",
   "nodos": 15,
   "edges": 14,
-  "puntaje": 80,
-  "aprobado": false,
-  "problemas": [
-   {
-    "tipo": "proporcion_extrema",
-    "ratio": 7.3,
-    "arreglo": "Cambia 'direction' (RIGHT<->DOWN) o agrupa etapas en zonas para que el diagrama sea más compacto."
-   }
-  ]
+  "puntaje": 100,
+  "aprobado": true,
+  "problemas": []
  },
  "plataforma-recaudo": {
   "archivo": "plataforma-recaudo.drawio",
   "nodos": 12,
   "edges": 12,
-  "puntaje": 92,
+  "puntaje": 100,
   "aprobado": true,
-  "problemas": [
-   {
-    "tipo": "proporcion_extrema",
-    "ratio": 4.2,
-    "arreglo": "Cambia 'direction' (RIGHT<->DOWN) o agrupa etapas en zonas para que el diagrama sea más compacto."
-   }
-  ]
+  "problemas": []
  },
  "modelo-recaudo": {
   "archivo": "modelo-recaudo.drawio",
