@@ -25,6 +25,12 @@ def _validate(spec: dict) -> None:
     for z in zones.values():
         if z.get("parent") and z["parent"] not in zones:
             errs.append(f"zona '{z['id']}': parent '{z['parent']}' no existe")
+        chain, cur = [z["id"]], z.get("parent")
+        while cur in zones and cur not in chain:
+            chain.append(cur)
+            cur = zones[cur].get("parent")
+        if cur in chain:
+            errs.append(f"zona '{z['id']}': ciclo en parent ({' -> '.join(chain + [cur])})")
     for n in spec.get("nodes", []):
         if n.get("zone") and n["zone"] not in zones:
             errs.append(f"nodo '{n['id']}': zone '{n['zone']}' no existe")
@@ -43,6 +49,13 @@ def _validate(spec: dict) -> None:
         errs.append("el spec no tiene nodes")
     if errs:
         raise ValueError("Spec inválido:\n- " + "\n- ".join(errs))
+
+
+def _safe_name(name: str) -> str:
+    """El nombre de salida es un nombre de archivo, no una ruta: no puede escribir fuera de out_dir."""
+    if not name or name in (".", "..") or "/" in name or "\\" in name:
+        raise ValueError(f"name inválido {name!r}: usa un nombre de archivo sin rutas")
+    return name
 
 
 def _cell(parent_el, **attrs):
@@ -211,6 +224,7 @@ def build(spec: dict | str, out_dir: str, name: str = "diagrama", formats: tuple
     """Construye el diagrama. Devuelve rutas generadas."""
     if isinstance(spec, str):
         spec = json.loads(spec)
+    name = _safe_name(name)
     _validate(spec)
     out = Path(out_dir).expanduser().resolve()
     out.mkdir(parents=True, exist_ok=True)
@@ -237,6 +251,7 @@ def build(spec: dict | str, out_dir: str, name: str = "diagrama", formats: tuple
 
 def build_mermaid(code: str, out_dir: str, name: str = "diagrama", formats: tuple[str, ...] = ("png",)) -> dict:
     """Mermaid -> .drawio nativo editable (draw.io lo convierte y lo acomoda). Para ER, secuencia, clases, gantt..."""
+    name = _safe_name(name)
     out = Path(out_dir).expanduser().resolve()
     out.mkdir(parents=True, exist_ok=True)
     mmd = out / f"{name}.mmd"
@@ -257,6 +272,7 @@ def build_mermaid(code: str, out_dir: str, name: str = "diagrama", formats: tupl
 def build_template(example_id: str, replacements: dict[str, str], out_dir: str, name: str = "diagrama",
                    formats: tuple[str, ...] = ("png",)) -> dict:
     """Copia un ejemplo oficial y reemplaza sus textos conservando el formato (modo plantilla)."""
+    name = _safe_name(name)
     out = Path(out_dir).expanduser().resolve()
     drawio_path = examples.from_template(example_id, replacements, out / f"{name}.drawio")
     result = {"drawio": str(drawio_path)}

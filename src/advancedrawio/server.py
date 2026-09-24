@@ -147,7 +147,9 @@ def lint_diagram(path: str) -> dict:
 @mcp.tool()
 def render(path: str) -> Image:
     """Renderiza un .drawio existente a PNG para revisarlo visualmente."""
-    out = str(Path(path).with_suffix(".preview.png"))
+    if not Path(path).is_file():
+        raise ToolError(f"No existe el archivo {path!r}")
+    out = str(Path(path).resolve().with_suffix(".preview.png"))
     try:
         drawio_cli.export(path, out, "png")
     except RuntimeError as e:

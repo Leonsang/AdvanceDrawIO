@@ -51,6 +51,10 @@ python -c "from advancedrawio.lint import lint; print(lint('diagramas/X.drawio')
 - Un puntaje de 100 no garantiza un buen diagrama. El linter no ve zonas que flotan porque sus edges
   están en capas ocultas, ni los huecos grandes. Por eso el agente también revisa el PNG.
 
+- Seguridad (ver SECURITY.md): los argumentos de las tools vienen de un LLM y son no confiables. Toda
+  ruta que va al CLI de draw.io se pasa absoluta (`drawio_cli._abs`); `name` pasa por `_safe_name`;
+  `--no-sandbox` solo como root. Cada regla tiene su test en `tests/test_seguridad.py`.
+
 ## Estado y siguiente paso
 
 Validación del agente con los ejemplos (resultados en `docs/galeria/revision.json`, que regenera el CI):

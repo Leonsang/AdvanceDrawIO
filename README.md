@@ -207,6 +207,7 @@ en `icons/` (por ejemplo `icons/vertex-ai.svg`) o en la carpeta que indique `ADV
 | `DRAWIO_BIN` | Autodetecta en PATH, macOS, Windows y WSL |
 | `ADVANCEDRAWIO_ICONS` | `./icons` |
 | `ADVANCEDRAWIO_CACHE` | `~/.cache/advancedrawio` |
+| `ADVANCEDRAWIO_NO_SANDBOX` | Sin definir. Con `1`, draw.io corre sin el sandbox de Chromium (solo si tu Linux no lo soporta; como root se desactiva solo) |
 
 ## Limitaciones conocidas
 
@@ -221,6 +222,7 @@ en `icons/` (por ejemplo `icons/vertex-ai.svg`) o en la carpeta que indique `ADV
 - [Revisión objetiva](docs/revision.md)
 - [Galería](docs/galeria/README.md)
 - [Sesiones en la nube de Claude Code](docs/cloud.md)
+- [Seguridad](SECURITY.md)
 - [Cómo contribuir](CONTRIBUTING.md)
 - [Notas de versión](release-notes)
 
