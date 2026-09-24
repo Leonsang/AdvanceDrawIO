@@ -1,6 +1,6 @@
 {
   "title": "Cómo funciona AdvanceDrawIO",
-  "direction": "RIGHT",
+  "direction": "DOWN",
   "layers": [
     {
       "id": "flujo",
@@ -44,7 +44,8 @@
     {
       "id": "tu",
       "label": "Tú",
-      "kind": "actor"
+      "kind": "actor",
+      "zone": "cliente"
     },
     {
       "id": "llm",

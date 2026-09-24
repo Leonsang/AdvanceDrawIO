@@ -1,6 +1,6 @@
 {
   "title": "Plataforma de IA conversacional · GCP",
-  "direction": "RIGHT",
+  "direction": "DOWN",
   "layers": [
     {"id": "conv", "name": "Flujo conversacional", "color": "#4284F3"},
     {"id": "datos", "name": "Datos y analítica", "color": "#34A853"},

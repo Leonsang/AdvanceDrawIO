@@ -1,6 +1,6 @@
 {
   "title": "Asistente multiagente de atención",
-  "direction": "RIGHT",
+  "direction": "DOWN",
   "layers": [
     {
       "id": "conv",

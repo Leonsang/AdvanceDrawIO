@@ -1,6 +1,6 @@
 {
   "title": "API de pedidos serverless (AWS)",
-  "direction": "RIGHT",
+  "direction": "DOWN",
   "layers": [
     {
       "id": "pedido",
@@ -8,38 +8,30 @@
     },
     {
       "id": "seg",
-      "name": "Seguridad",
-      "visible": false
+      "name": "Seguridad"
     },
     {
       "id": "obs",
-      "name": "Observabilidad",
-      "visible": false
+      "name": "Observabilidad"
     }
   ],
   "zones": [
     {
       "id": "aws",
-      "label": "AWS Cloud",
+      "label": "AWS Cloud · us-east-1",
       "style": "outlineConnect=0;gradientColor=none;fontSize=12;fontStyle=1;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;"
-    },
-    {
-      "id": "region",
-      "label": "us-east-1",
-      "parent": "aws",
-      "style": "outlineConnect=0;gradientColor=none;fontSize=12;fontStyle=1;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_region;strokeColor=#879196;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#879196;dashed=1;"
     },
     {
       "id": "sync",
       "label": "Síncrono",
       "kind": "zone",
-      "parent": "region"
+      "parent": "aws"
     },
     {
       "id": "async",
       "label": "Asíncrono",
       "kind": "zone",
-      "parent": "region"
+      "parent": "aws"
     }
   ],
   "nodes": [
@@ -120,7 +112,7 @@
       "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;",
       "w": 56,
       "h": 56,
-      "zone": "region"
+      "zone": "aws"
     }
   ],
   "edges": [
