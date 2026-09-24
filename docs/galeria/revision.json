@@ -8,7 +8,7 @@
   "problemas": [
    {
     "tipo": "proporcion_extrema",
-    "ratio": 9.6,
+    "ratio": 6.5,
     "arreglo": "Cambia 'direction' (RIGHT<->DOWN) o agrupa etapas en zonas para que el diagrama sea más compacto."
    }
   ]

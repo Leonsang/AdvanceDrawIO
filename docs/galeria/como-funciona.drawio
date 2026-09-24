@@ -3,7 +3,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" value="Base" />
         <mxCell id="cliente" parent="1" style="akind=external;container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;fillColor=#EFEBE9;strokeColor=none;fontColor=#5F6368;" value="Tu herramienta de IA" vertex="1">
-          <mxGeometry height="355" width="204.83" x="166.17" y="33" as="geometry" />
+          <mxGeometry height="355" width="204.83" x="158.67" y="33" as="geometry" />
         </mxCell>
         <mxCell id="tu" parent="cliente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#E8F0FE;strokeColor=#5F6368;fontSize=11;" value="Tú" vertex="1">
           <mxGeometry height="60" width="40" x="62" y="41" as="geometry" />
@@ -12,7 +12,7 @@
           <mxGeometry height="48" width="170" x="25" y="297" as="geometry" />
         </mxCell>
         <mxCell id="mcp" parent="1" style="akind=cloud;container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;fillColor=#F1F3F4;strokeColor=none;fontStyle=1;fontColor=#5F6368;fontSize=14;" value="Servidor MCP advancedrawio" vertex="1">
-          <mxGeometry height="611" width="820" x="12" y="574" as="geometry" />
+          <mxGeometry height="835" width="630" x="100" y="574" as="geometry" />
         </mxCell>
         <mxCell id="refs" parent="mcp" style="akind=zone;container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;fillColor=none;strokeColor=#4284F3;dashed=1;dashPattern=1 2;strokeWidth=2;fontColor=#80868B;" value="Referencias" vertex="1">
           <mxGeometry height="99" width="400" x="10" y="49" as="geometry" />
@@ -24,7 +24,7 @@
           <mxGeometry height="48" width="170" x="220" y="41" as="geometry" />
         </mxCell>
         <mxCell id="pipe" parent="mcp" style="akind=zone;container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;fillColor=none;strokeColor=#4284F3;dashed=1;dashPattern=1 2;strokeWidth=2;fontColor=#80868B;" value="Pipeline" vertex="1">
-          <mxGeometry height="547" width="360" x="450" y="49" as="geometry" />
+          <mxGeometry height="771" width="170" x="450" y="49" as="geometry" />
         </mxCell>
         <mxCell id="spec" parent="pipe" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9AA0A6;fontSize=11;" value="Spec JSON validado" vertex="1">
           <mxGeometry height="48" width="150" x="10" y="41" as="geometry" />
@@ -36,13 +36,13 @@
           <mxGeometry height="48" width="150" x="10" y="489" as="geometry" />
         </mxCell>
         <mxCell id="lint" parent="pipe" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9AA0A6;fontSize=11;" value="Revisión 0–100" vertex="1">
-          <mxGeometry height="48" width="150" x="200" y="41" as="geometry" />
+          <mxGeometry height="48" width="150" x="10" y="713" as="geometry" />
         </mxCell>
         <mxCell id="salida" parent="1" style="akind=external;container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;fillColor=#E6F4EA;strokeColor=none;fontColor=#5F6368;" value="Salida" vertex="1">
-          <mxGeometry height="219" width="195" x="437" y="1371" as="geometry" />
+          <mxGeometry height="219" width="170" x="575" y="1595" as="geometry" />
         </mxCell>
         <mxCell id="drawio" parent="salida" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9AA0A6;fontSize=11;" value=".drawio editable" vertex="1">
-          <mxGeometry height="48" width="150" x="35" y="41" as="geometry" />
+          <mxGeometry height="48" width="150" x="10" y="41" as="geometry" />
         </mxCell>
         <mxCell id="png" parent="salida" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9AA0A6;fontSize=11;" value="PNG / SVG / PDF" vertex="1">
           <mxGeometry height="48" width="150" x="10" y="161" as="geometry" />
@@ -51,42 +51,42 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint y="10" as="offset" />
             <Array as="points">
-              <mxPoint x="247.67" y="232.0" />
+              <mxPoint x="240.17" y="232.0" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="e2" edge="1" parent="L_flujo" source="llm" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#4284F3;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;dashed=1;exitX=0.25;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="ejemplos" value="find / get_example">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="66.25" y="-32" as="offset" />
+            <mxPoint x="18.5" y="-32" as="offset" />
             <Array as="points">
-              <mxPoint x="233.5" y="393.0" />
-              <mxPoint x="233.5" y="513.0" />
-              <mxPoint x="117.0" y="513.0" />
-              <mxPoint x="117.0" y="618.0" />
+              <mxPoint x="226.0" y="393.0" />
+              <mxPoint x="226.0" y="513.0" />
+              <mxPoint x="205.0" y="513.0" />
+              <mxPoint x="205.0" y="618.0" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="e3" edge="1" parent="L_flujo" source="llm" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#4284F3;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="iconos" value="search_icons">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint y="-14.5" as="offset" />
+            <mxPoint y="33.25" as="offset" />
             <Array as="points">
-              <mxPoint x="276.0" y="393.0" />
-              <mxPoint x="276.0" y="419.0" />
-              <mxPoint x="327.0" y="419.0" />
-              <mxPoint x="327.0" y="618.0" />
+              <mxPoint x="268.5" y="393.0" />
+              <mxPoint x="268.5" y="419.0" />
+              <mxPoint x="415.0" y="419.0" />
+              <mxPoint x="415.0" y="618.0" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="e4" edge="1" parent="L_flujo" source="llm" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#4284F3;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;labelBackgroundColor=#4284F3;fontColor=#FFFFFF;fontStyle=1;fontSize=13;exitX=0.75;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="spec" value="&amp;nbsp;2&amp;nbsp;· build_diagram&amp;nbsp;">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-11.25" y="-32" as="offset" />
+            <mxPoint y="4.5" as="offset" />
             <Array as="points">
-              <mxPoint x="318.5" y="393.0" />
-              <mxPoint x="318.5" y="409.0" />
-              <mxPoint x="429.5" y="409.0" />
-              <mxPoint x="429.5" y="513.0" />
-              <mxPoint x="547.0" y="513.0" />
-              <mxPoint x="547.0" y="618.0" />
+              <mxPoint x="311.0" y="393.0" />
+              <mxPoint x="311.0" y="409.0" />
+              <mxPoint x="517.5" y="409.0" />
+              <mxPoint x="517.5" y="513.0" />
+              <mxPoint x="635.0" y="513.0" />
+              <mxPoint x="635.0" y="618.0" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -94,7 +94,7 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="offset" />
             <Array as="points">
-              <mxPoint x="547.0" y="800.0" />
+              <mxPoint x="635.0" y="800.0" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -102,54 +102,48 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="offset" />
             <Array as="points">
-              <mxPoint x="547.0" y="1024.0" />
+              <mxPoint x="635.0" y="1024.0" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e7" edge="1" parent="L_flujo" source="capas" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#4284F3;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;labelBackgroundColor=#4284F3;fontColor=#FFFFFF;fontStyle=1;fontSize=13;exitX=0.5;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="drawio" value="&amp;nbsp;5&amp;nbsp;">
+        <mxCell id="e7" edge="1" parent="L_flujo" source="capas" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#4284F3;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;labelBackgroundColor=#4284F3;fontColor=#FFFFFF;fontStyle=1;fontSize=13;exitX=0.5;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="lint" value="&amp;nbsp;5&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="635.0" y="1248.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="L_flujo" source="lint" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#4284F3;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;labelBackgroundColor=#4284F3;fontColor=#FFFFFF;fontStyle=1;fontSize=13;exitX=0.6667;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="drawio" value="&amp;nbsp;6&amp;nbsp;· entrega&amp;nbsp;">
           <mxGeometry relative="1" as="geometry">
             <mxPoint y="-8" as="offset" />
             <Array as="points">
-              <mxPoint x="547.0" y="1175.0" />
-              <mxPoint x="547.0" y="1366.0" />
+              <mxPoint x="660.0" y="1399.0" />
+              <mxPoint x="660.0" y="1590.0" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e8" edge="1" parent="L_flujo" source="drawio" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#4284F3;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;exitX=0.3333;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="png" value="">
+        <mxCell id="e9" edge="1" parent="L_flujo" source="drawio" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#4284F3;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="png" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="522.0" y="1496.0" />
+              <mxPoint x="660.0" y="1720.0" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e9" edge="1" parent="L_loop" source="drawio" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#EA4335;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;exitX=0.6667;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="lint" value="puntaje">
+        <mxCell id="e10" edge="1" parent="L_loop" source="lint" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#EA4335;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;dashed=1;exitX=0.3333;exitY=1;entryX=0.6666;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="llm" value="puntaje + PNG: corrige el spec">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint y="133.5" as="offset" />
+            <mxPoint y="-235.74" as="offset" />
             <Array as="points">
-              <mxPoint x="572.0" y="1476.0" />
-              <mxPoint x="607.0" y="1476.0" />
-              <mxPoint x="607.0" y="1611.0" />
-              <mxPoint x="852.0" y="1611.0" />
-              <mxPoint x="852.0" y="513.0" />
-              <mxPoint x="737.0" y="513.0" />
-              <mxPoint x="737.0" y="618.0" />
+              <mxPoint x="610.0" y="1399.0" />
+              <mxPoint x="610.0" y="1430.0" />
+              <mxPoint x="90.0" y="1430.0" />
+              <mxPoint x="90.0" y="12.0" />
+              <mxPoint x="321.67" y="12.0" />
+              <mxPoint x="321.67" y="274.0" />
+              <mxPoint x="296.83" y="274.0" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e10" edge="1" parent="L_loop" source="lint" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#EA4335;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;dashed=1;labelBackgroundColor=#EA4335;fontColor=#FFFFFF;fontStyle=1;fontSize=13;exitX=0.5;exitY=1;entryX=0.6666;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="llm" value="&amp;nbsp;6&amp;nbsp;· corrige el spec&amp;nbsp;">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint y="0.34" as="offset" />
-            <Array as="points">
-              <mxPoint x="737.0" y="1175.0" />
-              <mxPoint x="737.0" y="1206.0" />
-              <mxPoint x="842.0" y="1206.0" />
-              <mxPoint x="842.0" y="12.0" />
-              <mxPoint x="329.17" y="12.0" />
-              <mxPoint x="329.17" y="274.0" />
-              <mxPoint x="304.33" y="274.0" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-      <mxCell id="title" parent="1" vertex="1" value="Cómo funciona AdvanceDrawIO" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#202124;"><mxGeometry x="12.0" y="-27.0" width="700" height="36" as="geometry" /></mxCell><mxCell id="legend_t" parent="1" vertex="1" value="&lt;b&gt;Capas&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#80868B&quot;&gt;clic para mostrar / ocultar&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=12;"><mxGeometry x="872.0" y="33.0" width="170" height="34" as="geometry" /></mxCell><UserObject id="legend_0" label="Construcción" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_flujo&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#4284F3;"><mxGeometry x="872.0" y="77.0" width="170" height="32" as="geometry" /></mxCell></UserObject><UserObject id="legend_1" label="Ciclo de revisión" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_loop&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#EA4335;"><mxGeometry x="872.0" y="119.0" width="170" height="32" as="geometry" /></mxCell></UserObject></root>
+      <mxCell id="title" parent="1" vertex="1" value="Cómo funciona AdvanceDrawIO" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#202124;"><mxGeometry x="100.0" y="-27.0" width="700" height="36" as="geometry" /></mxCell><mxCell id="legend_t" parent="1" vertex="1" value="&lt;b&gt;Capas&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#80868B&quot;&gt;clic para mostrar / ocultar&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=12;"><mxGeometry x="785.0" y="33.0" width="170" height="34" as="geometry" /></mxCell><UserObject id="legend_0" label="Construcción" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_flujo&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#4284F3;"><mxGeometry x="785.0" y="77.0" width="170" height="32" as="geometry" /></mxCell></UserObject><UserObject id="legend_1" label="Ciclo de revisión" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_loop&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#EA4335;"><mxGeometry x="785.0" y="119.0" width="170" height="32" as="geometry" /></mxCell></UserObject></root>
     </mxGraphModel>
   </diagram></mxfile>

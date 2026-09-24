@@ -13,7 +13,7 @@ el workflow **galería** la regenera.
 | [Plataforma de IA conversacional · GCP](../../examples/plataforma-ia-gcp.json) | spec | 15 | 100 · sin problemas | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/plataforma-ia-gcp.drawio) |
 | [Plataforma de datos de recaudo](../../examples/plataforma-recaudo.json) | spec | 12 | 100 · sin problemas | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/plataforma-recaudo.drawio) |
 | [Modelo de datos de recaudo](../../examples/modelo-recaudo.mmd) | mermaid | 5 | 100 · sin problemas | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/modelo-recaudo.drawio) |
-| [DOFA de una app de pagos](../../examples/dofa-app-pagos.plantilla.json) | plantilla | 21 | 0 · nodo_aislado, solape | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/dofa-app-pagos.drawio) |
+| [DOFA de una app de pagos](../../examples/dofa-app-pagos.plantilla.json) | plantilla | 21 | no aplica (diseño del ejemplo) | [draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeria/dofa-app-pagos.drawio) |
 
 ## API de pedidos serverless (AWS)
 
