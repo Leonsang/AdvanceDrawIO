@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "advancedrawio"
+version = "0.1.0"
+description = "MCP server para diagramas draw.io avanzados: layout ELK, zonas anidadas, iconos oficiales y capas interactivas"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["mcp>=2.0"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+advancedrawio = "advancedrawio.server:main"
+advancedrawio-build = "advancedrawio.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/advancedrawio"]

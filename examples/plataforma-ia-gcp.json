@@ -1,0 +1,55 @@
+{
+  "title": "Plataforma de IA conversacional · GCP",
+  "direction": "RIGHT",
+  "layers": [
+    {"id": "conv", "name": "Flujo conversacional", "color": "#4284F3"},
+    {"id": "datos", "name": "Datos y analítica", "color": "#34A853"},
+    {"id": "seg", "name": "Seguridad", "color": "#EA4335", "visible": false}
+  ],
+  "zones": [
+    {"id": "canales", "label": "Canales", "kind": "external"},
+    {"id": "gcp", "label": "Google Cloud", "kind": "cloud"},
+    {"id": "borde", "label": "Borde", "kind": "zone", "parent": "gcp"},
+    {"id": "agentes", "label": "Capa de agentes", "kind": "zone", "parent": "gcp"},
+    {"id": "datos_z", "label": "Datos", "kind": "zone", "parent": "gcp"},
+    {"id": "ops", "label": "Seguridad y operación", "kind": "zone", "parent": "gcp"},
+    {"id": "core", "label": "Sistemas core", "kind": "external"}
+  ],
+  "nodes": [
+    {"id": "user", "label": "Cliente", "kind": "actor", "zone": "canales"},
+    {"id": "web", "label": "Widget web", "kind": "box", "zone": "canales"},
+    {"id": "lb", "label": "Entrada HTTPS", "product": "Cloud Load Balancing", "zone": "borde"},
+    {"id": "armor", "label": "WAF", "product": "CloudArmor", "zone": "borde"},
+    {"id": "apigee", "label": "API Gateway", "product": "Apigee API Platform", "zone": "borde"},
+    {"id": "orq", "label": "Orquestador ADK", "product": "Cloud Run", "zone": "agentes"},
+    {"id": "agent", "label": "Agent Engine", "product": "AI Platform", "zone": "agentes"},
+    {"id": "cx", "label": "Flujos CX", "product": "DialogFlow", "zone": "agentes"},
+    {"id": "fs", "label": "Sesiones", "product": "Firestore", "zone": "datos_z"},
+    {"id": "gcs", "label": "Documentos RAG", "product": "Cloud Storage", "zone": "datos_z"},
+    {"id": "ps", "label": "Eventos", "product": "Pub Sub", "zone": "datos_z"},
+    {"id": "bq", "label": "Analítica", "product": "BigQuery", "zone": "datos_z"},
+    {"id": "sm", "label": "Credenciales", "product": "Secret Manager", "zone": "ops"},
+    {"id": "iam", "label": "Identidades", "product": "Cloud IAM", "zone": "ops"},
+    {"id": "sap", "label": "SAP FI-CA", "kind": "database", "zone": "core"}
+  ],
+  "edges": [
+    {"from": "user", "to": "web", "layer": "conv"},
+    {"from": "web", "to": "lb", "layer": "conv", "step": 1},
+    {"from": "lb", "to": "armor", "layer": "conv"},
+    {"from": "armor", "to": "apigee", "layer": "conv"},
+    {"from": "apigee", "to": "orq", "label": "REST", "layer": "conv", "step": 2},
+    {"from": "orq", "to": "agent", "layer": "conv", "step": 3},
+    {"from": "orq", "to": "cx", "layer": "conv"},
+    {"from": "orq", "to": "sap", "label": "saldo", "layer": "conv", "step": 4},
+    {"from": "orq", "to": "fs", "layer": "datos"},
+    {"from": "agent", "to": "gcs", "label": "RAG", "layer": "datos"},
+    {"from": "orq", "to": "ps", "layer": "datos"},
+    {"from": "ps", "to": "bq", "label": "streaming", "layer": "datos"},
+    {"from": "orq", "to": "sm", "dashed": true, "layer": "seg"},
+    {"from": "iam", "to": "orq", "dashed": true, "layer": "seg"}
+  ],
+  "notes": [
+    {"text": "Sesión TTL 30 min", "near": "fs"},
+    {"text": "Sólo lectura vía RFC", "near": "sap"}
+  ]
+}
