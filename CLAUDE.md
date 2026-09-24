@@ -28,6 +28,10 @@ python -c "from advancedrawio.lint import lint; print(lint('diagramas/X.drawio')
   proporción) con puntaje 0–100. Se aprueba con ≥85.
 - `server.py`: tools `search_icons`, `spec_reference`, `build_diagram` (devuelve rutas, `revision` y el
   PNG), `lint_diagram`, `render` y `doctor`, más el prompt MCP `arquitecto_drawio`.
+- `examples.py` + `catalog.json`: los 770 ejemplos de jgraph (23 tipos, modos spec/mermaid/plantilla).
+  `recipe()` extrae estilos por rol y `from_template()` reemplaza por **texto visible** conservando el HTML
+  (las plantillas suelen duplicar el texto en una celda plana y otra HTML).
+- `xmlio.py`: lectura de `.drawio` que descomprime páginas guardadas como deflate+base64.
 - `agent.md`: prompt del agente (proceso + playbook). **Fuente única**: `.claude/agents/drawio-architect.md`
   debe tener el mismo cuerpo (hay un test que lo verifica).
 
@@ -38,6 +42,11 @@ python -c "from advancedrawio.lint import lint; print(lint('diagramas/X.drawio')
 - Nunca `pkill -f drawio` dentro de un comando que contenga "drawio": se mata a sí mismo.
 - Los errores de spec deben lanzarse como `ToolError`; si no, el modelo recibe un mensaje genérico
   y no puede autocorregirse.
+- Las tablas (`childLayout=`) son un solo nodo para el linter; sus filas son partes.
+- `search_shapes`: el ranking prefiere librerías oficiales vigentes (aws4, azure2, cisco19, kubernetes)
+  y la coincidencia exacta del recurso en el style. Los iconos Azure son `image=img/lib/azure2/...`.
+- Clasificación del catálogo: primero el nombre del archivo, luego la carpeta, luego las librerías.
+  Coincidencia por inicio de palabra ("flowchart" no es "chart"; "floor_plan" no es "lan").
 - Un puntaje de 100 no garantiza un buen diagrama. El linter no ve zonas que flotan porque sus edges
   están en capas ocultas, ni los huecos grandes. Por eso el agente también revisa el PNG.
 
@@ -49,8 +58,12 @@ Validando el agente con `examples/plataforma-recaudo.json`, siguiendo `agent.md`
 - **Pendiente, iteración 3**: alternar `direction` a DOWN. Si empeora, volver a la 2 y probar a agrupar
   etapas en zonas. Registrar el resultado aquí.
 
+Hecho: catálogo de 770 ejemplos + tools find_examples, get_example, search_shapes, build_from_mermaid y
+build_from_example. Probado por MCP: ER con Mermaid (100), DOFA con plantilla y AWS con stencils (100).
+
 Pendientes después:
-1. Documentar `lint_diagram`, el subagente y el prompt MCP en el README.
+1. Validar el modo plantilla con más tipos (planos, wireframes, eléctricos): puede haber textos repartidos
+   en varias celdas que el reemplazo por celda no cubra.
 2. Revisión de notas: detectar cuando una nota pisa el borde de una zona (pasa en plataforma-ia-gcp con DOWN).
 3. Iconos de Vertex AI y Gemini: los aporta Erick en `icons/` (no están en el índice de draw.io).
 

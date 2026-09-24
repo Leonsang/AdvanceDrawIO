@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from . import components as C
-from . import drawio_cli
+from . import drawio_cli, icons
 
 ROOT, BASE = "0", "1"
 
@@ -28,7 +28,7 @@ def _validate(spec: dict) -> None:
     for n in spec.get("nodes", []):
         if n.get("zone") and n["zone"] not in zones:
             errs.append(f"nodo '{n['id']}': zone '{n['zone']}' no existe")
-        if n.get("kind", "card") not in C.NODE_SIZE:
+        if not n.get("style") and n.get("kind", "card") not in C.NODE_SIZE:
             errs.append(f"nodo '{n['id']}': kind debe ser uno de {list(C.NODE_SIZE)}")
     for e in spec.get("edges", []):
         for k in ("from", "to"):
@@ -80,17 +80,25 @@ def _draft(spec: dict) -> tuple[ET.Element, dict]:
         kind = z.get("kind", "zone")
         p = z.get("parent") or BASE
         parent_of[z["id"]] = p
+        zst = C.zone_style(kind, ext)
+        if z.get("style"):
+            zst = f"akind={kind};container=1;collapsible=0;html=1;whiteSpace=wrap;" + z["style"]
         _cell(root, id=z["id"], parent=p, vertex=1, value=z.get("label", ""),
-              style=C.zone_style(kind, ext), geom={"width": 200, "height": 120})
+              style=zst, geom={"width": 200, "height": 120})
         ext += kind == "external"
     for n in spec["nodes"]:
         kind = n.get("kind", "card")
-        w, h = C.NODE_SIZE[kind]
+        w, h = C.NODE_SIZE.get(kind, (120, 60))
+        w, h = int(n.get("w", w)), int(n.get("h", h))
         p = n.get("zone") or BASE
         parent_of[n["id"]] = p
         sizes[n["id"]] = (w, h)
-        _cell(root, id=n["id"], parent=p, vertex=1, value=C.node_label(kind, n.get("label", n["id"]), n.get("product")),
-              style=C.node_style(kind, n.get("product")), geom={"width": w, "height": h})
+        style = n.get("style") or C.node_style(kind, n.get("product"))
+        if "<icono>" in style:
+            b64 = icons.resolve(n.get("product") or "")
+            style = style.replace("image=<icono>", "image=data:image/svg+xml," + b64 if b64 else "image=")
+        label = n.get("label", n["id"]) if n.get("style") else C.node_label(kind, n.get("label", n["id"]), n.get("product"))
+        _cell(root, id=n["id"], parent=p, vertex=1, value=label, style=style, geom={"width": w, "height": h})
     colors = {l["id"]: l.get("color") or C.LAYER_COLORS[i % len(C.LAYER_COLORS)]
               for i, l in enumerate(spec.get("layers", []))}
     edge_layer = {}
@@ -106,7 +114,7 @@ def _draft(spec: dict) -> tuple[ET.Element, dict]:
             label = f"&nbsp;{e['step']}&nbsp;" + (f"· {label}&nbsp;" if label else "")
         color = colors.get(e.get("layer"), C.BASE_EDGE)
         _cell(root, id=eid, parent=common, edge=1, source=e["from"], target=e["to"], value=label,
-              style=C.edge_style(color, e.get("dashed", False), e.get("bidirectional", False), e.get("step") is not None),
+              style=e.get("style") or C.edge_style(color, e.get("dashed", False), e.get("bidirectional", False), e.get("step") is not None),
               geom={"relative": 1})
     return model, {"sizes": sizes, "edge_layer": edge_layer, "colors": colors}
 
@@ -214,6 +222,25 @@ def build(spec: dict | str, out_dir: str, name: str = "diagrama", formats: tuple
     diagram.append(final)
     drawio_path = out / f"{name}.drawio"
     ET.ElementTree(mxfile).write(drawio_path, encoding="unicode")
+    result = {"drawio": str(drawio_path)}
+    for fmt in formats:
+        p = out / f"{name}.drawio.{fmt}"
+        drawio_cli.export(str(drawio_path), str(p), fmt)
+        result[fmt] = str(p)
+    return result
+
+
+def build_mermaid(code: str, out_dir: str, name: str = "diagrama", formats: tuple[str, ...] = ("png",)) -> dict:
+    """Mermaid -> .drawio nativo editable (draw.io lo convierte y lo acomoda). Para ER, secuencia, clases, gantt..."""
+    out = Path(out_dir).expanduser().resolve()
+    out.mkdir(parents=True, exist_ok=True)
+    mmd = out / f"{name}.mmd"
+    mmd.write_text(code, encoding="utf-8")
+    drawio_path = out / f"{name}.drawio"
+    try:
+        drawio_cli.run(["-x", "-f", "xml", "-o", str(drawio_path), str(mmd)])
+    finally:
+        mmd.unlink(missing_ok=True)
     result = {"drawio": str(drawio_path)}
     for fmt in formats:
         p = out / f"{name}.drawio.{fmt}"

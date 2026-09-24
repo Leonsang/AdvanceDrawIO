@@ -83,3 +83,31 @@ def resolve(name: str) -> str | None:
     if hits and not hits[0].endswith("(propio)"):
         return next(i["b64"] for i in _index() if i["title"] == hits[0])
     return None
+
+
+@lru_cache(maxsize=1)
+def _stencils() -> list[dict]:
+    path = CACHE_DIR / "search-index.json"
+    _index()
+    items = json.loads(path.read_text(encoding="utf-8"))
+    return [{"title": i["title"], "tags": i.get("tags", ""), "style": i["style"], "w": i.get("w", 60), "h": i.get("h", 60)}
+            for i in items if ("shape=mxgraph." in i.get("style", "") or "image=img/lib/" in i.get("style", ""))
+            and "image=data" not in i.get("style", "")]
+
+
+def search_shapes(query: str, limit: int = 10) -> list[dict]:
+    """Stencils vectoriales (AWS, Azure, Cisco, BPMN, UML, redes...) con su style listo para el spec."""
+    words = [w[:-1] if len(w) > 3 and w.endswith("s") else w for w in _norm(query).split()]
+    hits = [i for i in _stencils() if all(w in _norm(i["title"] + " " + i["tags"] + " " + i["style"]) for w in words)]
+    official = ("mxgraph.aws4.", "img/lib/azure2/", "mxgraph.azure2.", "mxgraph.gcp2.", "mxgraph.cisco19.", "mxgraph.kubernetes.",
+                "mxgraph.bpmn.", "mxgraph.uml25.", "mxgraph.networks.", "mxgraph.flowchart.")
+    decorative = ("webicons", "weblogos", "veeam", "aws3d", "mxgraph.aws3.", "mxgraph.aws2.", "mxgraph.azure.",
+                  "mxgraph.gcp.", "mxgraph.cisco.", "citrix", "alibaba")
+    vendor = {"aws", "azure", "gcp", "google", "cisco", "kubernetes", "k8s", "bpmn", "uml"}
+    core = [w for w in words if w not in vendor] or words
+    exact = re.compile(r"[.=]" + re.escape("_".join(core)) + r"[;.]", re.I)
+    hits.sort(key=lambda i: (not any(o in i["style"] for o in official), any(d in i["style"] for d in decorative),
+                             not exact.search(i["style"]),
+                             not all(w in _norm(i["title"]).split() or w in _norm(i["title"]) for w in core),
+                             _norm(i["title"]) != _norm(" ".join(core)), len(i["title"])))
+    return [{"titulo": i["title"], "style": i["style"], "w": i["w"], "h": i["h"]} for i in hits[:limit]]
