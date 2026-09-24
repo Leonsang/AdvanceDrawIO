@@ -37,7 +37,7 @@ Un 100 no garantiza un buen diagrama. El linter no detecta:
 - un flujo principal que no se puede seguir con el dedo;
 - nombres genéricos ("Servicio 1") o técnicos para un público de negocio.
 
-Por eso el agente mira también el PNG que devuelve cada build. Ver [agente.md](agente.md).
+Por eso el agente mira también el PNG que devuelve cada build. El proceso y el playbook están en [agent.md](../src/advancedrawio/agent.md).
 
 ## El ciclo en la práctica
 
@@ -45,6 +45,11 @@ Así se corrigieron los ejemplos de la [galería](galeria/README.md), siguiendo 
 
 | Ejemplo | Antes | Cambio | Después |
 |---|---|---|---|
-| AWS serverless | 75 · zona casi vacía, proporción 5,6 | fusionar `AWS Cloud` con la región, capas secundarias visibles, `DOWN` | ver galería |
-| Multiagente GCP | 80 · proporción 5,7 | `direction: DOWN` | ver galería |
-| Plataforma IA GCP | 80 · proporción 7,3 | `direction: DOWN` | ver galería |
+| Plataforma de datos de recaudo | 92 · proporción 4,2 | `direction: DOWN` | 100 |
+| Plataforma IA GCP | 80 · proporción 7,3 | `direction: DOWN` | 100 |
+| Multiagente GCP | 80 · proporción 5,7 | `direction: DOWN` | 100 |
+| Cómo funciona | 92 · proporción 4,7 | `DOWN` y la revisión como paso del pipeline | ver galería |
+| AWS serverless | 75 · zona casi vacía, proporción 5,6 | fusionar `AWS Cloud` con la región y hacer visibles las capas secundarias | ver galería |
+
+En AWS, `DOWN` empeoró la proporción (9,6) porque la cadena es larga y lineal, así que se volvió a
+`RIGHT`: el playbook dice volver a la mejor versión cuando una iteración empeora.
