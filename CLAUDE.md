@@ -7,7 +7,7 @@ Dueño: Erick Sang. Preferencia: soluciones mínimas, sin sobreingeniería.
 ## Comandos
 
 ```bash
-bash scripts/setup-cloud.sh                      # instala draw.io Desktop + xvfb + paquete (VM cloud)
+bash scripts/setup-cloud.sh && source .venv/bin/activate  # draw.io + xvfb + paquete en .venv (VM cloud)
 pytest -q                                        # 7 tests; uno usa draw.io real
 advancedrawio-build examples/plataforma-ia-gcp.json -o diagramas
 advancedrawio-build --search "bigquery"          # nombres exactos de iconos
@@ -53,3 +53,10 @@ Pendientes después:
 1. Documentar `lint_diagram`, el subagente y el prompt MCP en el README.
 2. Revisión de notas: detectar cuando una nota pisa el borde de una zona (pasa en plataforma-ia-gcp con DOWN).
 3. Iconos de Vertex AI y Gemini: los aporta Erick en `icons/` (no están en el índice de draw.io).
+
+## Sesiones cloud
+
+- El paquete se instala en `.venv` (el pip del sistema choca con PyJWT de Debian).
+- Si la red del entorno no permite las descargas de releases de github.com, draw.io no se instala:
+  el setup avisa y sigue, y el test con draw.io real se salta. Para el pipeline completo (layout ELK,
+  PNG), habilitar ese acceso en la configuración de red del entorno.
