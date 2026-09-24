@@ -1,0 +1,41 @@
+name: galería
+
+# Regenera docs/galeria (PNG, .drawio y tabla de revisión) con draw.io real y lo commitea en la
+# rama. Corre cuando cambian los ejemplos o el código, o a mano (Actions → galería → Run workflow).
+# El commit del bot usa GITHUB_TOKEN, que no dispara workflows: no hay bucle.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "examples/**"
+      - "src/advancedrawio/**"
+      - "scripts/galeria.py"
+      - ".github/workflows/galeria.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: galeria-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  galeria:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: draw.io Desktop + paquete
+        run: bash scripts/setup-cloud.sh
+      - name: construir la galería
+        run: .venv/bin/python scripts/galeria.py
+      - name: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/galeria
+          if git diff --cached --quiet; then echo "sin cambios"; exit 0; fi
+          git commit -m "Galería regenerada"
+          git push

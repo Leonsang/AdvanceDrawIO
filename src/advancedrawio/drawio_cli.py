@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import glob
+import json
 import os
 import platform
 import shutil
@@ -46,9 +47,10 @@ def run(args: list[str], timeout: int = 120) -> None:
 
 
 def layout(path: str, direction: str = "RIGHT", spacing: int = 40) -> None:
-    cfg = ('[{"layout":"elkLayered","config":{"elk.direction":"%s","elk.spacing.nodeNode":"%d",'
-           '"elk.layered.spacing.nodeNodeBetweenLayers":"%d","elk.hierarchyHandling":"INCLUDE_CHILDREN"}}]'
-           % (direction, spacing, int(spacing * 1.8)))
+    cfg = json.dumps([{"layout": "elkLayered", "config": {
+        "elk.direction": direction, "elk.spacing.nodeNode": str(spacing),
+        "elk.layered.spacing.nodeNodeBetweenLayers": str(int(spacing * 1.8)),
+        "elk.hierarchyHandling": "INCLUDE_CHILDREN"}}], separators=(",", ":"))
     run(["-x", "-f", "xml", "--layout", cfg, "-o", path, path])
 
 

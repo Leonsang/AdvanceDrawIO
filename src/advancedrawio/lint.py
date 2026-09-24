@@ -117,7 +117,7 @@ def lint(path: str) -> dict:
                 origin = (ox, oy)
             pts += [(float(p.get("x", 0)) + origin[0], float(p.get("y", 0)) + origin[1]) for p in arr.iter("mxPoint")]
         pts.append((tx + tw / 2, ty + th / 2))
-        segs = list(zip(pts, pts[1:]))
+        segs = list(zip(pts, pts[1:], strict=False))
         crossed = sorted(n for n in nodes - {s, t} if any(_hits(sg, rects[n]) for sg in segs))
         if crossed:
             issues.append({"tipo": "edge_cruza_nodo", "edge": f"{s}->{t}",

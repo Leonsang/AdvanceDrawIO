@@ -1,0 +1,67 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install ruff
+      - run: ruff check src tests scripts
+
+  test:
+    name: test (${{ matrix.os }}, py${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      # El índice de iconos (~5 MB) se descarga una vez y se reutiliza entre jobs.
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/advancedrawio
+          key: icon-index-v1
+      - run: pip install -e ".[dev]"
+      - run: pytest -q -rs
+
+  # Con draw.io Desktop real (headless con xvfb): corre los tests que lo necesitan y construye
+  # todos los ejemplos. Es lo que prueba de verdad el layout ELK, las capas y el export.
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/advancedrawio
+          key: icon-index-v1
+      - name: draw.io Desktop + paquete
+        run: bash scripts/setup-cloud.sh
+      - name: tests con draw.io
+        run: .venv/bin/pytest -q -rs
+      - name: construir y revisar todos los ejemplos
+        run: .venv/bin/python scripts/galeria.py -o galeria --min-score 85
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: galeria
+          path: galeria/

@@ -1,0 +1,196 @@
+{
+  "title": "API de pedidos serverless (AWS)",
+  "direction": "RIGHT",
+  "layers": [
+    {
+      "id": "pedido",
+      "name": "Flujo del pedido"
+    },
+    {
+      "id": "seg",
+      "name": "Seguridad",
+      "visible": false
+    },
+    {
+      "id": "obs",
+      "name": "Observabilidad",
+      "visible": false
+    }
+  ],
+  "zones": [
+    {
+      "id": "aws",
+      "label": "AWS Cloud",
+      "style": "outlineConnect=0;gradientColor=none;fontSize=12;fontStyle=1;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;"
+    },
+    {
+      "id": "region",
+      "label": "us-east-1",
+      "parent": "aws",
+      "style": "outlineConnect=0;gradientColor=none;fontSize=12;fontStyle=1;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_region;strokeColor=#879196;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#879196;dashed=1;"
+    },
+    {
+      "id": "sync",
+      "label": "Síncrono",
+      "kind": "zone",
+      "parent": "region"
+    },
+    {
+      "id": "async",
+      "label": "Asíncrono",
+      "kind": "zone",
+      "parent": "region"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "cliente",
+      "label": "Cliente web",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3D;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.user;",
+      "w": 48,
+      "h": 48
+    },
+    {
+      "id": "api",
+      "label": "API Gateway",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;",
+      "w": 56,
+      "h": 56,
+      "zone": "sync"
+    },
+    {
+      "id": "auth",
+      "label": "Cognito",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cognito;",
+      "w": 56,
+      "h": 56,
+      "zone": "sync"
+    },
+    {
+      "id": "crear",
+      "label": "Crear pedido",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;",
+      "w": 56,
+      "h": 56,
+      "zone": "sync"
+    },
+    {
+      "id": "ddb",
+      "label": "Pedidos",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;",
+      "w": 56,
+      "h": 56,
+      "zone": "sync"
+    },
+    {
+      "id": "bus",
+      "label": "Eventos",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;",
+      "w": 56,
+      "h": 56,
+      "zone": "async"
+    },
+    {
+      "id": "cola",
+      "label": "Cola facturación",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;",
+      "w": 56,
+      "h": 56,
+      "zone": "async"
+    },
+    {
+      "id": "facturar",
+      "label": "Facturar",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;",
+      "w": 56,
+      "h": 56,
+      "zone": "async"
+    },
+    {
+      "id": "s3",
+      "label": "Facturas PDF",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;",
+      "w": 56,
+      "h": 56,
+      "zone": "async"
+    },
+    {
+      "id": "cw",
+      "label": "Métricas y logs",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;",
+      "w": 56,
+      "h": 56,
+      "zone": "region"
+    }
+  ],
+  "edges": [
+    {
+      "from": "cliente",
+      "to": "api",
+      "step": 1,
+      "label": "POST /pedidos",
+      "layer": "pedido"
+    },
+    {
+      "from": "api",
+      "to": "crear",
+      "step": 2,
+      "layer": "pedido"
+    },
+    {
+      "from": "crear",
+      "to": "ddb",
+      "step": 3,
+      "layer": "pedido"
+    },
+    {
+      "from": "crear",
+      "to": "bus",
+      "step": 4,
+      "label": "PedidoCreado",
+      "layer": "pedido"
+    },
+    {
+      "from": "bus",
+      "to": "cola",
+      "layer": "pedido"
+    },
+    {
+      "from": "cola",
+      "to": "facturar",
+      "step": 5,
+      "layer": "pedido"
+    },
+    {
+      "from": "facturar",
+      "to": "s3",
+      "step": 6,
+      "layer": "pedido"
+    },
+    {
+      "from": "api",
+      "to": "auth",
+      "label": "JWT",
+      "dashed": true,
+      "layer": "seg"
+    },
+    {
+      "from": "crear",
+      "to": "cw",
+      "dashed": true,
+      "layer": "obs"
+    },
+    {
+      "from": "facturar",
+      "to": "cw",
+      "dashed": true,
+      "layer": "obs"
+    }
+  ],
+  "notes": [
+    {
+      "text": "Reintentos y DLQ en la cola",
+      "near": "cola"
+    }
+  ]
+}

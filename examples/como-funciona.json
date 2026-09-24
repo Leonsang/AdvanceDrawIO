@@ -1,0 +1,174 @@
+{
+  "title": "Cómo funciona AdvanceDrawIO",
+  "direction": "RIGHT",
+  "layers": [
+    {
+      "id": "flujo",
+      "name": "Construcción"
+    },
+    {
+      "id": "loop",
+      "name": "Ciclo de revisión"
+    }
+  ],
+  "zones": [
+    {
+      "id": "cliente",
+      "label": "Tu herramienta de IA",
+      "kind": "external"
+    },
+    {
+      "id": "mcp",
+      "label": "Servidor MCP advancedrawio",
+      "kind": "cloud"
+    },
+    {
+      "id": "refs",
+      "label": "Referencias",
+      "kind": "zone",
+      "parent": "mcp"
+    },
+    {
+      "id": "pipe",
+      "label": "Pipeline",
+      "kind": "zone",
+      "parent": "mcp"
+    },
+    {
+      "id": "salida",
+      "label": "Salida",
+      "kind": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "tu",
+      "label": "Tú",
+      "kind": "actor"
+    },
+    {
+      "id": "llm",
+      "label": "Agente drawio-architect",
+      "kind": "box",
+      "zone": "cliente",
+      "w": 170
+    },
+    {
+      "id": "ejemplos",
+      "label": "770 ejemplos de jgraph",
+      "kind": "box",
+      "zone": "refs",
+      "w": 170
+    },
+    {
+      "id": "iconos",
+      "label": "~10.000 iconos y stencils",
+      "kind": "box",
+      "zone": "refs",
+      "w": 170
+    },
+    {
+      "id": "spec",
+      "label": "Spec JSON validado",
+      "kind": "box",
+      "zone": "pipe"
+    },
+    {
+      "id": "elk",
+      "label": "Layout ELK (draw.io)",
+      "kind": "box",
+      "zone": "pipe"
+    },
+    {
+      "id": "capas",
+      "label": "Capas, leyenda y notas",
+      "kind": "box",
+      "zone": "pipe"
+    },
+    {
+      "id": "lint",
+      "label": "Revisión 0–100",
+      "kind": "box",
+      "zone": "pipe"
+    },
+    {
+      "id": "drawio",
+      "label": ".drawio editable",
+      "kind": "box",
+      "zone": "salida"
+    },
+    {
+      "id": "png",
+      "label": "PNG / SVG / PDF",
+      "kind": "box",
+      "zone": "salida"
+    }
+  ],
+  "edges": [
+    {
+      "from": "tu",
+      "to": "llm",
+      "step": 1,
+      "label": "describe el sistema",
+      "layer": "flujo"
+    },
+    {
+      "from": "llm",
+      "to": "ejemplos",
+      "label": "find / get_example",
+      "layer": "flujo",
+      "dashed": true
+    },
+    {
+      "from": "llm",
+      "to": "iconos",
+      "label": "search_icons",
+      "layer": "flujo",
+      "dashed": true
+    },
+    {
+      "from": "llm",
+      "to": "spec",
+      "step": 2,
+      "label": "build_diagram",
+      "layer": "flujo"
+    },
+    {
+      "from": "spec",
+      "to": "elk",
+      "step": 3,
+      "layer": "flujo"
+    },
+    {
+      "from": "elk",
+      "to": "capas",
+      "step": 4,
+      "layer": "flujo"
+    },
+    {
+      "from": "capas",
+      "to": "drawio",
+      "step": 5,
+      "layer": "flujo"
+    },
+    {
+      "from": "drawio",
+      "to": "png",
+      "layer": "flujo"
+    },
+    {
+      "from": "drawio",
+      "to": "lint",
+      "label": "puntaje",
+      "layer": "loop"
+    },
+    {
+      "from": "lint",
+      "to": "llm",
+      "step": 6,
+      "label": "corrige el spec",
+      "layer": "loop",
+      "dashed": true
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "title": "Asistente multiagente de atención",
+  "direction": "RIGHT",
+  "layers": [
+    {
+      "id": "conv",
+      "name": "Conversación"
+    },
+    {
+      "id": "datos",
+      "name": "Datos y conocimiento"
+    },
+    {
+      "id": "seg",
+      "name": "Seguridad",
+      "visible": false
+    }
+  ],
+  "zones": [
+    {
+      "id": "canales",
+      "label": "Canales",
+      "kind": "external"
+    },
+    {
+      "id": "gcp",
+      "label": "Google Cloud",
+      "kind": "cloud"
+    },
+    {
+      "id": "agentes",
+      "label": "Agentes",
+      "kind": "zone",
+      "parent": "gcp"
+    },
+    {
+      "id": "conocimiento",
+      "label": "Memoria y conocimiento",
+      "kind": "zone",
+      "parent": "gcp"
+    },
+    {
+      "id": "core",
+      "label": "Sistemas core",
+      "kind": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "wa",
+      "label": "WhatsApp",
+      "kind": "box",
+      "zone": "canales"
+    },
+    {
+      "id": "web",
+      "label": "Chat web",
+      "kind": "box",
+      "zone": "canales"
+    },
+    {
+      "id": "orq",
+      "label": "Orquestador",
+      "product": "Cloud Run",
+      "zone": "agentes"
+    },
+    {
+      "id": "fact",
+      "label": "Agente facturas",
+      "product": "Cloud Run",
+      "zone": "agentes"
+    },
+    {
+      "id": "pagos",
+      "label": "Agente pagos",
+      "product": "Cloud Run",
+      "zone": "agentes"
+    },
+    {
+      "id": "llm",
+      "label": "Modelo de lenguaje",
+      "kind": "box",
+      "zone": "agentes"
+    },
+    {
+      "id": "mem",
+      "label": "Sesiones",
+      "product": "Firestore",
+      "zone": "conocimiento"
+    },
+    {
+      "id": "kb",
+      "label": "Base de conocimiento",
+      "product": "BigQuery",
+      "zone": "conocimiento"
+    },
+    {
+      "id": "sm",
+      "label": "Credenciales",
+      "product": "Secret Manager",
+      "zone": "gcp"
+    },
+    {
+      "id": "erp",
+      "label": "ERP facturación",
+      "kind": "database",
+      "zone": "core"
+    }
+  ],
+  "edges": [
+    {
+      "from": "wa",
+      "to": "orq",
+      "step": 1,
+      "layer": "conv"
+    },
+    {
+      "from": "web",
+      "to": "orq",
+      "step": 1,
+      "layer": "conv"
+    },
+    {
+      "from": "orq",
+      "to": "llm",
+      "step": 2,
+      "label": "intención",
+      "layer": "conv"
+    },
+    {
+      "from": "orq",
+      "to": "fact",
+      "step": 3,
+      "layer": "conv"
+    },
+    {
+      "from": "orq",
+      "to": "pagos",
+      "step": 3,
+      "layer": "conv"
+    },
+    {
+      "from": "orq",
+      "to": "mem",
+      "layer": "datos",
+      "bidirectional": true
+    },
+    {
+      "from": "fact",
+      "to": "kb",
+      "layer": "datos"
+    },
+    {
+      "from": "fact",
+      "to": "erp",
+      "step": 4,
+      "label": "consulta saldo",
+      "layer": "conv"
+    },
+    {
+      "from": "pagos",
+      "to": "erp",
+      "step": 4,
+      "label": "registra pago",
+      "layer": "conv"
+    },
+    {
+      "from": "orq",
+      "to": "sm",
+      "dashed": true,
+      "label": "secretos",
+      "layer": "seg"
+    }
+  ],
+  "notes": [
+    {
+      "text": "Escala a 0 fuera de horario",
+      "near": "orq"
+    }
+  ]
+}

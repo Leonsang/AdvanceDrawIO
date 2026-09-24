@@ -114,7 +114,8 @@ def _draft(spec: dict) -> tuple[ET.Element, dict]:
             label = f"&nbsp;{e['step']}&nbsp;" + (f"· {label}&nbsp;" if label else "")
         color = colors.get(e.get("layer"), C.BASE_EDGE)
         _cell(root, id=eid, parent=common, edge=1, source=e["from"], target=e["to"], value=label,
-              style=e.get("style") or C.edge_style(color, e.get("dashed", False), e.get("bidirectional", False), e.get("step") is not None),
+              style=e.get("style") or C.edge_style(color, e.get("dashed", False), e.get("bidirectional", False),
+                                                   e.get("step") is not None),
               geom={"relative": 1})
     return model, {"sizes": sizes, "edge_layer": edge_layer, "colors": colors}
 
@@ -169,8 +170,10 @@ def _finish(model: ET.Element, spec: dict, meta: dict) -> ET.Element:
         if c.get("parent") == BASE and c.get("vertex") == "1":
             g = c.find("mxGeometry")
             x, y = float(g.get("x", 0)), float(g.get("y", 0))
-            xs.append(x); ys.append(y)
-            xe.append(x + float(g.get("width", 0))); ye.append(y + float(g.get("height", 0)))
+            xs.append(x)
+            ys.append(y)
+            xe.append(x + float(g.get("width", 0)))
+            ye.append(y + float(g.get("height", 0)))
     minx, miny, maxx = min(xs), min(ys), max(xe)
     # 4) notas en su propia capa
     if spec.get("notes"):
@@ -191,8 +194,10 @@ def _finish(model: ET.Element, spec: dict, meta: dict) -> ET.Element:
         toggles.append(({"id": "_notes", "name": "Anotaciones"}, "L__notes"))
     if toggles and spec.get("legend", True):
         lx = maxx + 40
-        _cell(root, id="legend_t", parent=BASE, vertex=1, value="<b>Capas</b><br><font style=\"font-size:9px\" color=\"#80868B\">clic para mostrar / ocultar</font>",
-              style="text;html=1;align=left;verticalAlign=top;fontSize=12;", geom={"x": lx, "y": miny, "width": 170, "height": 34})
+        _cell(root, id="legend_t", parent=BASE, vertex=1,
+              value="<b>Capas</b><br><font style=\"font-size:9px\" color=\"#80868B\">clic para mostrar / ocultar</font>",
+              style="text;html=1;align=left;verticalAlign=top;fontSize=12;",
+              geom={"x": lx, "y": miny, "width": 170, "height": 34})
         for i, (l, lid) in enumerate(toggles):
             color = meta["colors"].get(l["id"], "#F9AB00")
             link = "data:action/json," + json.dumps({"actions": [{"toggle": {"cells": [lid]}}]}, separators=(",", ":"))

@@ -11,7 +11,7 @@ requires-python = ">=3.10"
 dependencies = ["mcp>=2.0"]
 
 [project.optional-dependencies]
-dev = ["pytest"]
+dev = ["pytest", "ruff"]
 
 [project.scripts]
 advancedrawio = "advancedrawio.server:main"
@@ -19,3 +19,17 @@ advancedrawio-build = "advancedrawio.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/advancedrawio"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E741"]  # `l` para capas (layers) es la convención del código
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]  # fixtures XML en una línea
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

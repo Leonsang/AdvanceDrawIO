@@ -1,0 +1,33 @@
+%% title: Modelo de datos de recaudo
+erDiagram
+    CLIENTE ||--o{ CUENTA : tiene
+    CUENTA ||--o{ FACTURA : genera
+    FACTURA ||--o{ PAGO : recibe
+    PAGO }o--|| CANAL : "llega por"
+    CLIENTE {
+        string documento PK
+        string nombre
+        string segmento
+    }
+    CUENTA {
+        string numero PK
+        string documento FK
+        string estado
+    }
+    FACTURA {
+        string id PK
+        string cuenta FK
+        date vencimiento
+        decimal valor
+    }
+    PAGO {
+        string id PK
+        string factura FK
+        string canal FK
+        datetime fecha
+        decimal valor
+    }
+    CANAL {
+        string codigo PK
+        string nombre
+    }
