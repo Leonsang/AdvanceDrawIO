@@ -16,9 +16,16 @@ MIN_SPEC = {"nodes": [{"id": "n", "kind": "box"}]}
 @pytest.fixture
 def argv(monkeypatch):
     """Captura el comando que se le pasaría a draw.io, sin ejecutarlo."""
-    calls = []
+    calls, real_run = [], subprocess.run
+
+    def fake_run(cmd, **kw):
+        if "/opt/drawio/drawio" not in cmd:  # p. ej. platform.system() en Windows con Python 3.10
+            return real_run(cmd, **kw)
+        calls.append(cmd)
+        return subprocess.CompletedProcess(cmd, 1, "", "")
+
     monkeypatch.setattr(drawio_cli, "find", lambda: "/opt/drawio/drawio")
-    monkeypatch.setattr(subprocess, "run", lambda cmd, **kw: calls.append(cmd) or subprocess.CompletedProcess(cmd, 1, "", ""))
+    monkeypatch.setattr(subprocess, "run", fake_run)
     monkeypatch.setenv("DISPLAY", ":0")
     return calls
 
