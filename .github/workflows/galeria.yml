@@ -31,14 +31,20 @@ jobs:
       - name: draw.io Desktop + paquete
         run: bash scripts/setup-cloud.sh
       - name: construir la galería
-        run: .venv/bin/python scripts/galeria.py
+        run: .venv/bin/python scripts/galeria.py -o "$RUNNER_TEMP/galeria"
       - name: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/galeria
+          git fetch origin "$GITHUB_REF_NAME"
+          # si la rama recibió cambios de código después de este commit, esta galería ya es vieja:
+          # el run del commit nuevo la publica
+          if ! git diff --quiet "$GITHUB_SHA" FETCH_HEAD -- . ':(exclude)docs/galeria'; then
+            echo "la rama avanzó; no publico una galería vieja"; exit 0
+          fi
+          git reset -q --hard FETCH_HEAD
+          rm -rf docs/galeria && cp -r "$RUNNER_TEMP/galeria" docs/galeria
+          git add -A docs/galeria
           if git diff --cached --quiet; then echo "sin cambios"; exit 0; fi
           git commit -m "Galería regenerada [skip ci]"
-          # si llegó otro commit a la rama mientras se construía, la galería va encima
-          git pull --rebase origin "$GITHUB_REF_NAME"
-          git push
+          git push origin "HEAD:$GITHUB_REF_NAME"
