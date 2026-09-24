@@ -61,7 +61,10 @@ def main() -> int:
             shutil.copy(r["drawio"], out / f"{r['nombre']}.drawio")
             shutil.copy(r["png"], out / f"{r['nombre']}.png")
             rev = r["revision"]
-            print(f"{r['nombre']:<22} {rev['puntaje']:>3}  {', '.join(i['tipo'] for i in rev['problemas']) or '-'}")
+            detail = ", ".join(i["tipo"] for i in rev["problemas"]) or "-"
+            if r["modo"] == "plantilla":
+                detail = "no aplica (plantilla)"
+            print(f"{r['nombre']:<22} {rev['puntaje']:>3}  {detail}")
             if r["modo"] == "spec" and rev["puntaje"] < a.min_score:
                 failed.append(f"{src.name}: puntaje {rev['puntaje']} < {a.min_score}")
             rows.append(r)

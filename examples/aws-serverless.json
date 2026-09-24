@@ -107,6 +107,22 @@
       "zone": "async"
     },
     {
+      "id": "notificar",
+      "label": "Notificar",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;",
+      "w": 56,
+      "h": 56,
+      "zone": "async"
+    },
+    {
+      "id": "email",
+      "label": "Email al cliente",
+      "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.simple_email_service;",
+      "w": 56,
+      "h": 56,
+      "zone": "async"
+    },
+    {
       "id": "cw",
       "label": "Métricas y logs",
       "style": "sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;",
@@ -160,6 +176,18 @@
       "layer": "pedido"
     },
     {
+      "from": "bus",
+      "to": "notificar",
+      "step": 5,
+      "layer": "pedido"
+    },
+    {
+      "from": "notificar",
+      "to": "email",
+      "step": 6,
+      "layer": "pedido"
+    },
+    {
       "from": "api",
       "to": "auth",
       "label": "JWT",
@@ -174,6 +202,12 @@
     },
     {
       "from": "facturar",
+      "to": "cw",
+      "dashed": true,
+      "layer": "obs"
+    },
+    {
+      "from": "notificar",
       "to": "cw",
       "dashed": true,
       "layer": "obs"
