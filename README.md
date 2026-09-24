@@ -11,7 +11,7 @@ Servidor MCP para generar diagramas **draw.io de arquitectura avanzados**. El mo
 - **Los 770 ejemplos oficiales de jgraph como referencia**: catálogo clasificado en 23 tipos, con la receta
   de estilos de cada ejemplo y tres modos de construcción (spec, Mermaid y plantilla).
 
-![ejemplo](docs/ejemplo.png)
+![ejemplo](docs/galeria/plataforma-ia-gcp.png)
 
 ## Requisitos
 
@@ -62,7 +62,7 @@ Después pide: *"usa doctor"* para verificar que encuentra draw.io y los iconos.
 
 | spec (stencils AWS) | mermaid (ER) | plantilla (DOFA) |
 |---|---|---|
-| ![](docs/modo-spec-aws.png) | ![](docs/modo-mermaid.png) | ![](docs/modo-plantilla.png) |
+| ![](docs/modo-spec-aws.png) | ![](docs/modo-mermaid.png) | ![](docs/galeria/dofa-app-pagos.png) |
 
 ## Tools
 

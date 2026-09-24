@@ -24,15 +24,20 @@ RAW = "https://raw.githubusercontent.com/Leonsang/AdvanceDrawIO/main/docs/galeri
 
 def build_one(src: Path, tmp: Path) -> dict:
     text = src.read_text(encoding="utf-8")
+    name = src.name.split(".")[0]
     if src.suffix == ".mmd":
-        res = builder.build_mermaid(text, str(tmp), src.stem)
+        res = builder.build_mermaid(text, str(tmp), name)
         title = next((ln.split(":", 1)[1].strip() for ln in text.splitlines() if ln.startswith("%% title:")), src.stem)
         mode = "mermaid"
+    elif src.name.endswith(".plantilla.json"):
+        t = json.loads(text)
+        res = builder.build_template(t["ejemplo"], t["reemplazos"], str(tmp), name)
+        title, mode = t.get("titulo", name), "plantilla"
     else:
         spec = json.loads(text)
-        res = builder.build(spec, str(tmp), src.stem)
+        res = builder.build(spec, str(tmp), name)
         title, mode = spec.get("title", src.stem), "spec"
-    return {"nombre": src.stem, "titulo": title, "modo": mode, "fuente": src.name, **res, "revision": lint(res["drawio"])}
+    return {"nombre": name, "titulo": title, "modo": mode, "fuente": src.name, **res, "revision": lint(res["drawio"])}
 
 
 def main() -> int:
@@ -43,6 +48,7 @@ def main() -> int:
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     sources = sorted((ROOT / "examples").glob("*.json")) + sorted((ROOT / "examples").glob("*.mmd"))
+    sources.sort(key=lambda p: p.name.endswith(".plantilla.json"))  # spec, luego plantillas
     rows, failed = [], []
     with tempfile.TemporaryDirectory() as tmp:
         for src in sources:

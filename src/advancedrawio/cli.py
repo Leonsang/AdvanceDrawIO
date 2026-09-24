@@ -1,4 +1,4 @@
-"""CLI: advancedrawio-build spec.json|diagrama.mmd [-o salida] [-n nombre] [-f png svg pdf] [--min-score 85]"""
+"""CLI: advancedrawio-build spec.json|diagrama.mmd|x.plantilla.json [-o salida] [-n nombre] [-f png svg pdf] [--min-score 85]"""
 from __future__ import annotations
 
 import argparse
@@ -12,7 +12,7 @@ from .lint import lint
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="advancedrawio-build")
-    ap.add_argument("spec", nargs="?", help="spec .json (modo spec) o .mmd (modo Mermaid)")
+    ap.add_argument("spec", nargs="?", help="spec .json, .mmd (Mermaid) o .plantilla.json ({ejemplo, reemplazos})")
     ap.add_argument("-o", "--out", default="diagramas")
     ap.add_argument("-n", "--name")
     ap.add_argument("-f", "--formats", nargs="*", default=["png"])
@@ -23,12 +23,15 @@ def main(argv: list[str] | None = None) -> int:
         sys.stdout.write("\n".join(icons.search(a.search, 20)) + "\n")
         return 0
     if not a.spec:
-        ap.error("falta spec.json o diagrama.mmd")
+        ap.error("falta spec.json, diagrama.mmd o x.plantilla.json")
     src = Path(a.spec)
     text = src.read_text(encoding="utf-8")
-    name, fmts = a.name or src.stem, tuple(a.formats)
+    name, fmts = a.name or src.name.split(".")[0], tuple(a.formats)
     if src.suffix == ".mmd":
         res = builder.build_mermaid(text, a.out, name, fmts)
+    elif src.name.endswith(".plantilla.json"):
+        t = json.loads(text)
+        res = builder.build_template(t["ejemplo"], t["reemplazos"], a.out, name, fmts)
     else:
         res = builder.build(json.loads(text), a.out, name, fmts)
     res["revision"] = lint(res["drawio"])

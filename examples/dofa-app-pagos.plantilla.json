@@ -1,0 +1,22 @@
+{
+  "titulo": "DOFA de una app de pagos",
+  "ejemplo": "drawio-diagrams:templates/business/swot_2.xml",
+  "reemplazos": {
+    "SUBJECT DESCRIPTION\nSWOT ANALYSIS": "APP DE PAGOS\nANÁLISIS DOFA",
+    "SUBJECT\nDESCRIPTION": "APP DE\nPAGOS",
+    "STRENGTHS": "FORTALEZAS",
+    "WEAKNESSES": "DEBILIDADES",
+    "HELPFUL": "A FAVOR",
+    "HARMFUL": "EN CONTRA",
+    "INTERNAL": "INTERNO",
+    "EXTERNAL": "EXTERNO",
+    "S": "F",
+    "W": "D",
+    "O": "O",
+    "T": "A",
+    "- internal strength 1\n- internal strength 2\n- internal strength 3\n- internal strength 4\n- internal strength 5\n- internal strength 6\n- internal strength 7\n- internal strength 8\n- internal strength 9\n- internal strength 10": "- Onboarding en 2 minutos\n- Pagos con QR sin comisión\n- Equipo con experiencia en fintech",
+    "- internal weakness 1\n- internal weakness 2\n- internal weakness 3\n- internal weakness 4\n- internal weakness 5\n- internal weakness 6\n- internal weakness 7\n- internal weakness 8\n- internal weakness 9\n- internal weakness 10": "- Marca poco conocida\n- Soporte solo en horario laboral",
+    "- external opportunity 1\n- external opportunity 2\n- external opportunity 3\n- external opportunity 4\n- external opportunity 5\n- external opportunity 6\n- external opportunity 7\n- external opportunity 8\n- external opportunity 9\n- external opportunity 10": "- Pagos inmediatos entre bancos\n- Comercios pequeños sin datáfono",
+    "- external threat 1\n- external threat 2\n- external threat 3\n- external threat 4\n- external threat 5\n- external threat 6\n- external threat 7\n- external threat 8\n- external threat 9\n- external threat 10": "- Billeteras de los bancos grandes\n- Cambios regulatorios\n- Fraude por ingeniería social"
+  }
+}

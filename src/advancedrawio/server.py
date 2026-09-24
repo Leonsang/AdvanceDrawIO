@@ -129,14 +129,10 @@ def build_from_example(example_id: str, replacements: dict[str, str], name: str 
                        out_dir: str | None = None) -> list:
     """Copia un ejemplo oficial y reemplaza sus textos ({"texto viejo": "texto nuevo"}). Para planos,
     infografías, wireframes, canvases de negocio: todo lo que depende del diseño y no del layout."""
-    out = Path(out_dir or OUT).expanduser().resolve()
     try:
-        drawio = examples.from_template(example_id, replacements, out / f"{name}.drawio")
-        png = out / f"{name}.drawio.png"
-        drawio_cli.export(str(drawio), str(png), "png")
+        return _deliver(builder.build_template(example_id, replacements, out_dir or OUT, name))
     except (ValueError, RuntimeError, OSError) as e:
         raise ToolError(str(e)) from e
-    return _deliver({"drawio": str(drawio), "png": str(png)})
 
 
 @mcp.tool()

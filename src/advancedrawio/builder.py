@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from . import components as C
-from . import drawio_cli, icons
+from . import drawio_cli, examples, icons
 
 ROOT, BASE = "0", "1"
 
@@ -246,6 +246,19 @@ def build_mermaid(code: str, out_dir: str, name: str = "diagrama", formats: tupl
         drawio_cli.run(["-x", "-f", "xml", "-o", str(drawio_path), str(mmd)])
     finally:
         mmd.unlink(missing_ok=True)
+    result = {"drawio": str(drawio_path)}
+    for fmt in formats:
+        p = out / f"{name}.drawio.{fmt}"
+        drawio_cli.export(str(drawio_path), str(p), fmt)
+        result[fmt] = str(p)
+    return result
+
+
+def build_template(example_id: str, replacements: dict[str, str], out_dir: str, name: str = "diagrama",
+                   formats: tuple[str, ...] = ("png",)) -> dict:
+    """Copia un ejemplo oficial y reemplaza sus textos conservando el formato (modo plantilla)."""
+    out = Path(out_dir).expanduser().resolve()
+    drawio_path = examples.from_template(example_id, replacements, out / f"{name}.drawio")
     result = {"drawio": str(drawio_path)}
     for fmt in formats:
         p = out / f"{name}.drawio.{fmt}"
