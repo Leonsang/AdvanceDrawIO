@@ -7,6 +7,7 @@ name: galería
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - "examples/**"
       - "src/advancedrawio/**"
