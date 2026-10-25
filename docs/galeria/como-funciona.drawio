@@ -3,13 +3,13 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" value="Base" />
         <mxCell id="cliente" parent="1" style="akind=external;container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;fillColor=#EFEBE9;strokeColor=none;fontColor=#5F6368;" value="Tu herramienta de IA" vertex="1">
-          <mxGeometry height="355" width="204.83" x="158.67" y="33" as="geometry" />
+          <mxGeometry height="355" width="209.33" x="154.17" y="33" as="geometry" />
         </mxCell>
         <mxCell id="tu" parent="cliente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#E8F0FE;strokeColor=#5F6368;fontSize=11;" value="Tú" vertex="1">
-          <mxGeometry height="60" width="40" x="62" y="41" as="geometry" />
+          <mxGeometry height="60" width="40" x="66" y="41" as="geometry" />
         </mxCell>
         <mxCell id="llm" parent="cliente" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9AA0A6;fontSize=11;" value="Agente drawio-architect" vertex="1">
-          <mxGeometry height="48" width="170" x="25" y="297" as="geometry" />
+          <mxGeometry height="48" width="170" x="29" y="297" as="geometry" />
         </mxCell>
         <mxCell id="mcp" parent="1" style="akind=cloud;container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;fillColor=#F1F3F4;strokeColor=none;fontStyle=1;fontColor=#5F6368;fontSize=14;" value="Servidor MCP advancedrawio" vertex="1">
           <mxGeometry height="835" width="630" x="100" y="574" as="geometry" />
@@ -79,12 +79,12 @@
         </mxCell>
         <mxCell id="e4" edge="1" parent="L_flujo" source="llm" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#4284F3;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;labelBackgroundColor=#4284F3;fontColor=#FFFFFF;fontStyle=1;fontSize=13;exitX=0.75;exitY=1;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="spec" value="&amp;nbsp;2&amp;nbsp;· build_diagram&amp;nbsp;">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint y="4.5" as="offset" />
+            <mxPoint y="8" as="offset" />
             <Array as="points">
               <mxPoint x="311.0" y="393.0" />
               <mxPoint x="311.0" y="409.0" />
-              <mxPoint x="517.5" y="409.0" />
-              <mxPoint x="517.5" y="513.0" />
+              <mxPoint x="521.0" y="409.0" />
+              <mxPoint x="521.0" y="513.0" />
               <mxPoint x="635.0" y="513.0" />
               <mxPoint x="635.0" y="618.0" />
             </Array>
@@ -132,14 +132,14 @@
         </mxCell>
         <mxCell id="e10" edge="1" parent="L_loop" source="lint" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#EA4335;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;dashed=1;exitX=0.3333;exitY=1;entryX=0.6666;entryY=0;edgeStyle=orthogonalEdgeStyle;" target="llm" value="puntaje + PNG: corrige el spec">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint y="-235.74" as="offset" />
+            <mxPoint y="-231.24" as="offset" />
             <Array as="points">
               <mxPoint x="610.0" y="1399.0" />
               <mxPoint x="610.0" y="1430.0" />
               <mxPoint x="90.0" y="1430.0" />
               <mxPoint x="90.0" y="12.0" />
-              <mxPoint x="321.67" y="12.0" />
-              <mxPoint x="321.67" y="274.0" />
+              <mxPoint x="326.17" y="12.0" />
+              <mxPoint x="326.17" y="274.0" />
               <mxPoint x="296.83" y="274.0" />
             </Array>
           </mxGeometry>

@@ -3,7 +3,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" value="Base" />
         <mxCell id="aws" parent="1" style="akind=zone;container=1;collapsible=0;html=1;whiteSpace=wrap;outlineConnect=0;gradientColor=none;fontSize=12;fontStyle=1;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" value="AWS Cloud · us-east-1" vertex="1">
-          <mxGeometry height="353.67" width="1375" x="340" y="12" as="geometry" />
+          <mxGeometry height="353.67" width="1380" x="344" y="12" as="geometry" />
         </mxCell>
         <mxCell id="sync" parent="aws" style="akind=zone;container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;fillColor=none;strokeColor=#4284F3;dashed=1;dashPattern=1 2;strokeWidth=2;fontColor=#80868B;" value="Síncrono" vertex="1">
           <mxGeometry height="257" width="545" x="15" y="41" as="geometry" />
@@ -21,7 +21,7 @@
           <mxGeometry height="56" width="56" x="479" y="41" as="geometry" />
         </mxCell>
         <mxCell id="async" parent="aws" style="akind=zone;container=1;collapsible=0;html=1;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;fillColor=none;strokeColor=#4284F3;dashed=1;dashPattern=1 2;strokeWidth=2;fontColor=#80868B;" value="Asíncrono" vertex="1">
-          <mxGeometry height="243" width="536" x="829" y="100.67" as="geometry" />
+          <mxGeometry height="243" width="536" x="834" y="100.67" as="geometry" />
         </mxCell>
         <mxCell id="bus" parent="async" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;" value="Eventos" vertex="1">
           <mxGeometry height="56" width="56" x="10" y="50" as="geometry" />
@@ -48,8 +48,8 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-15" as="offset" />
             <Array as="points">
-              <mxPoint x="335.0" y="145.33" />
-              <mxPoint x="350.0" y="145.33" />
+              <mxPoint x="339.0" y="145.33" />
+              <mxPoint x="354.0" y="145.33" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -57,7 +57,7 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="offset" />
             <Array as="points">
-              <mxPoint x="517.5" y="136.0" />
+              <mxPoint x="521.5" y="136.0" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -65,7 +65,7 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="offset" />
             <Array as="points">
-              <mxPoint x="752.0" y="122.0" />
+              <mxPoint x="756.0" y="122.0" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -73,9 +73,9 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="130.5" as="offset" />
             <Array as="points">
-              <mxPoint x="686.0" y="150.0" />
-              <mxPoint x="686.0" y="191.0" />
-              <mxPoint x="1164.0" y="191.0" />
+              <mxPoint x="690.0" y="150.0" />
+              <mxPoint x="690.0" y="191.0" />
+              <mxPoint x="1173.0" y="191.0" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -83,7 +83,7 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="offset" />
             <Array as="points">
-              <mxPoint x="1317.0" y="181.67000000000002" />
+              <mxPoint x="1326.0" y="181.67000000000002" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -91,7 +91,7 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="offset" />
             <Array as="points">
-              <mxPoint x="1537.0" y="181.67000000000002" />
+              <mxPoint x="1546.0" y="181.67000000000002" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -99,8 +99,8 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="48.67" as="offset" />
             <Array as="points">
-              <mxPoint x="1251.0" y="200.34" />
-              <mxPoint x="1251.0" y="297.67" />
+              <mxPoint x="1260.0" y="200.34" />
+              <mxPoint x="1260.0" y="297.67" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -108,7 +108,7 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="offset" />
             <Array as="points">
-              <mxPoint x="1537.0" y="297.67" />
+              <mxPoint x="1546.0" y="297.67" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -116,21 +116,21 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="48.67" as="offset" />
             <Array as="points">
-              <mxPoint x="447.0" y="154.67000000000002" />
-              <mxPoint x="447.0" y="252.0" />
+              <mxPoint x="451.0" y="154.67000000000002" />
+              <mxPoint x="451.0" y="252.0" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="e10" edge="1" parent="L_obs" source="crear" style="rounded=1;html=1;endArrow=blockThin;endFill=1;endSize=4;strokeWidth=2;strokeColor=#34A853;fontSize=11;fontColor=#3C4043;labelBackgroundColor=#FFFFFF;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;edgeStyle=orthogonalEdgeStyle;" target="cw" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="696.0" y="136.0" />
-              <mxPoint x="696.0" y="180.0" />
-              <mxPoint x="921.0" y="180.0" />
-              <mxPoint x="921.0" y="86.5" />
+              <mxPoint x="700.0" y="136.0" />
+              <mxPoint x="700.0" y="180.0" />
+              <mxPoint x="925.0" y="180.0" />
+              <mxPoint x="925.0" y="86.5" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="L__notes" parent="0" value="Anotaciones" /><mxCell id="note0" parent="L__notes" vertex="1" value="Reintentos y DLQ en la invocación" style="shape=note;size=10;whiteSpace=wrap;html=1;fillColor=#FEF7E0;strokeColor=#F9AB00;fontSize=10;align=left;spacingLeft=6;verticalAlign=top;"><mxGeometry x="1435" y="116" width="150" height="34" as="geometry" /></mxCell><mxCell id="title" parent="1" vertex="1" value="API de pedidos serverless (AWS)" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#202124;"><mxGeometry x="18.0" y="-48.0" width="700" height="36" as="geometry" /></mxCell><mxCell id="legend_t" parent="1" vertex="1" value="&lt;b&gt;Capas&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#80868B&quot;&gt;clic para mostrar / ocultar&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=12;"><mxGeometry x="1755.0" y="12.0" width="170" height="34" as="geometry" /></mxCell><UserObject id="legend_0" label="Flujo del pedido" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_pedido&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#4284F3;"><mxGeometry x="1755.0" y="56.0" width="170" height="32" as="geometry" /></mxCell></UserObject><UserObject id="legend_1" label="Seguridad" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_seg&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#EA4335;"><mxGeometry x="1755.0" y="98.0" width="170" height="32" as="geometry" /></mxCell></UserObject><UserObject id="legend_2" label="Observabilidad" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_obs&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#34A853;"><mxGeometry x="1755.0" y="140.0" width="170" height="32" as="geometry" /></mxCell></UserObject><UserObject id="legend_3" label="Anotaciones" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L__notes&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#F9AB00;"><mxGeometry x="1755.0" y="182.0" width="170" height="32" as="geometry" /></mxCell></UserObject></root>
+        <mxCell id="L__notes" parent="0" value="Anotaciones" /><mxCell id="note0" parent="L__notes" vertex="1" value="Reintentos y DLQ en la invocación" style="shape=note;size=10;whiteSpace=wrap;html=1;fillColor=#FEF7E0;strokeColor=#F9AB00;fontSize=10;align=left;spacingLeft=6;verticalAlign=top;"><mxGeometry x="1444" y="116" width="150" height="34" as="geometry" /></mxCell><mxCell id="title" parent="1" vertex="1" value="API de pedidos serverless (AWS)" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#202124;"><mxGeometry x="18.0" y="-48.0" width="700" height="36" as="geometry" /></mxCell><mxCell id="legend_t" parent="1" vertex="1" value="&lt;b&gt;Capas&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#80868B&quot;&gt;clic para mostrar / ocultar&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=12;"><mxGeometry x="1764.0" y="12.0" width="170" height="34" as="geometry" /></mxCell><UserObject id="legend_0" label="Flujo del pedido" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_pedido&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#4284F3;"><mxGeometry x="1764.0" y="56.0" width="170" height="32" as="geometry" /></mxCell></UserObject><UserObject id="legend_1" label="Seguridad" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_seg&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#EA4335;"><mxGeometry x="1764.0" y="98.0" width="170" height="32" as="geometry" /></mxCell></UserObject><UserObject id="legend_2" label="Observabilidad" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L_obs&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#34A853;"><mxGeometry x="1764.0" y="140.0" width="170" height="32" as="geometry" /></mxCell></UserObject><UserObject id="legend_3" label="Anotaciones" link="data:action/json,{&quot;actions&quot;:[{&quot;toggle&quot;:{&quot;cells&quot;:[&quot;L__notes&quot;]}}]}"><mxCell parent="1" vertex="1" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=2;fontSize=11;fontColor=#202124;align=left;spacingLeft=10;strokeColor=#F9AB00;"><mxGeometry x="1764.0" y="182.0" width="170" height="32" as="geometry" /></mxCell></UserObject></root>
     </mxGraphModel>
   </diagram></mxfile>

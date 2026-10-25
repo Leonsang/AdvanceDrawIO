@@ -1,5 +1,5 @@
 <mxfile host="Electron">
-  <diagram id="Ltqyvq7MDNoMyHN8UR0j" name="pageWithNumber">
+  <diagram id="gy9PdpEMEBPbJiZe1H1J" name="pageWithNumber">
     <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -248,7 +248,7 @@
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </UserObject>
-        <UserObject label="&quot;llega por&quot;" mermaidId="e:PAGO-&gt;CANAL#0" mermaidBaseStyle="curved=1;startArrow=ERzeroToMany;startSize=14;endArrow=ERmandOne;endSize=14;strokeColor=light-dark(#333333,#cccccc);strokeWidth=1;html=1;fontSize=14;labelBackgroundColor=light-dark(#F8FFEC4D,#2a2a2a4D);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=0.5;exitY=1;entryX=0.5;entryY=0;" mermaidBaseValue="&quot;llega por&quot;" id="78">
+        <UserObject label="llega por" mermaidId="e:PAGO-&gt;CANAL#0" mermaidBaseStyle="curved=1;startArrow=ERzeroToMany;startSize=14;endArrow=ERmandOne;endSize=14;strokeColor=light-dark(#333333,#cccccc);strokeWidth=1;html=1;fontSize=14;labelBackgroundColor=light-dark(#F8FFEC4D,#2a2a2a4D);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=0.5;exitY=1;entryX=0.5;entryY=0;" mermaidBaseValue="llega por" id="78">
           <mxCell edge="1" parent="1" source="45" style="curved=1;startArrow=ERzeroToMany;startSize=14;endArrow=ERmandOne;endSize=14;strokeColor=light-dark(#333333,#cccccc);strokeWidth=1;html=1;fontSize=14;labelBackgroundColor=light-dark(#F8FFEC4D,#2a2a2a4D);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="66">
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
